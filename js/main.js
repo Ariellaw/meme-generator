@@ -21,11 +21,12 @@ function renderImgs(value = 'all') {
     elMemeContainer.innerHTML = strHTML;
 }
 
-function onClickImg(elImg) {
-    var meme = getImgById(elImg.id);
-    gDraw.img = meme;
+function onClickImg(imgId) {
+    var memeImg = getImgById(imgId);
+    console.log('image size', memeImg, memeImg.url.clientWidth, memeImg.clientHeight)
+    gDraw.img = memeImg;
     renderCanvas()
-    openEditor(meme);
+    openEditor(memeImg);
 }
 
 function onWrighting(ev) {
@@ -56,7 +57,7 @@ function drawTxt() {
 function onFilterMemeImgs(el) {
     setFilter(el.value);
     renderImgs(el.value);
-    el.placeholder = el.value;
-    el.value = '';
 }
-// Use the common font meme "impact" with stroke/shadow
+
+
+

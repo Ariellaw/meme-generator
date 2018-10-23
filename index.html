@@ -18,15 +18,15 @@
     </header>
 
     <form onsubmit="return false;">
-        <input list="keyword-selector" name="keyword" onchange="onFilterMemeImgs(this)" placeholder="puppy">
-        <datalist id="keyword-selector">
-            <option value="happy">
-            <option value="dancing">
-            <option value="sleeping">
-            <option value="puppy">
-            <option value="cat">
-            <option value="all">
-        </datalist>
+        <!-- <input list="keyword-selector" name="keyword" onchange="onFilterMemeImgs(this)" placeholder="puppy"> -->
+        <select id="keyword-selector" onchange="onFilterMemeImgs(this)" value="all" placeholder="all">
+            <option value="all"> All </option>
+            <option value="happy"> Happy </option>
+            <option value="dancing"> Dancing </option>
+            <option value="sleeping"> Sleeping </option>
+            <option value="puppy"> Puppy </option>
+            <option value="cat"> Cat </option>
+        </select>
     </form>
     <section class="meme-container">
     </section>
@@ -34,7 +34,7 @@
 
 
     <section class="edit-meme-container">
-        <canvas class="canvas"></canvas>
+        <canvas class="canvas" ></canvas>
 
         <input class="top-txt" type="text" placeholder="Top text" oninput="onWrighting()">
     </section>
