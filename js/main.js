@@ -6,9 +6,9 @@ function init() {
     createImgs();
     renderImgs();
 }
-function renderImgs() {
+function renderImgs(value = 'all') {
     var elMemeContainer = document.querySelector('.meme-container');
-    var memeImgs = getMemes();
+    var memeImgs = filterMemeImages(value);
     console.log(memeImgs);
     var strHTML = memeImgs.map(img => {
         return `<img onclick="onClickImg(${img.id})" class="memeImg" id=${img.id} src=${img.url} >`
@@ -35,5 +35,15 @@ var gMeme = {
 function onPickImg(el) {
     openEditor(el)
     console.log(el.src);
+}
+
+function onFilterMemeImgs(el) {
+    setFilter(el.value);
+    renderImgs(el.value);
+    el.placeholder = el.value;
+    el.value = '';
+}
+
+function onClickImg() {
 
 }

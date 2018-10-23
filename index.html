@@ -16,18 +16,29 @@
     <header class="header flex">
         <h1>MEME</h1>
     </header>
-    
-    <section class="meme-container" >
+
+    <form onsubmit="return false;">
+        <input list="keyword-selector" name="keyword" onchange="onFilterMemeImgs(this)" placeholder="puppy">
+        <datalist id="keyword-selector">
+            <option value="happy">
+            <option value="dancing">
+            <option value="sleeping">
+            <option value="puppy">
+            <option value="cat">
+            <option value="all">
+        </datalist>
+    </form>
+    <section class="meme-container">
     </section>
 
 
-        <canvas class="canvas"></canvas>
-        
-        <form action="">
-            <input type="text" placeholder="Top text">
-            <input type="text" placeholder="Bottom text">
-            <button type="submit" onclick="onSaveMeme()">Save meme</button>
-        </form>
+    <canvas class="canvas"></canvas>
+
+    <form action="">
+        <input type="text" placeholder="Top text">
+        <input type="text" placeholder="Bottom text">
+        <button type="submit" onclick="onSaveMeme()">Save meme</button>
+    </form>
     </section>
 
     <script src="lib/jquery/jquery.js"></script>
