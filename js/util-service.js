@@ -21,20 +21,8 @@ function saveToStorage(key, val) {
     localStorage.setItem(key, JSON.stringify(val))
 }
 
-function getItembyId(items, itemId) {
-    return items.find(function (item) {
-        return item.id === itemId;
-    })
-}
-
-function sortByTxt(a, b) {
-    var a = a.title;
-    var b = b.title;
-    if (a < b) return -1;
-    else if (a > b) return 1;
-    return 0;
-}
-
-function sortByNum(a, b) {
-    return a.price - b.price;
-}
+function getImgById(imgId) {
+    return gMemes.find(meme => {
+         return meme.id === imgId;
+     })
+ }

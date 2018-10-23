@@ -2,9 +2,16 @@
 
 console.log('main');
 
+var gDraw = {
+    img: 'img/002.jepg',
+    text: 'Try me',
+    // font: ''
+}
+
 function init() {
     createImgs();
     renderImgs();
+    createCanvas();
 }
 
 function renderImgs() {
@@ -17,28 +24,32 @@ function renderImgs() {
     elMemeContainer.innerHTML = strHTML;
 }
 
-var gMemes = [{ id: 1, url: 'img/popo.jpg', keywords: ['happy'] }];
-var gMeme = {
-    selectedImgId: 5,
-    txts: [
-        {
-            line: 'I never eat Falafel',
-            size: 20,
-            align: 'left',
-            color: 'red'
-        }
-    ]
-}
-
-
-
 function onClickImg(imgId) {
     var meme = getImgById(imgId);
+    gDraw.img = meme;
+    renderCanvas()
     openEditor(meme);
 }
 
-function getImgById(imgId) {
-   return gMemes.find(meme => {
-        return meme.id === imgId;
-    })
+function onWrighting(ev) {
+    var txt = $('.top-txt').val();
+    gDraw.text = txt;
+    renderCanvas()
 }
+
+function renderCanvas() {
+    drawImg();
+    drawTxt()
+}
+
+function drawImg() {
+    var currMeme = document.getElementById(`${gDraw.img.id}`);
+    gCtx.drawImage(currMeme, 10, 10);
+}
+
+function drawTxt() {
+    gCtx.font = "50px Ariel";
+    gCtx.fillText(gDraw.text, 70, 70);
+    gCtx.stroke();
+}
+
