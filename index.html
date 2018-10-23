@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body onload="init()">
+<body>
     <header class="header flex">
         <h1>MEME</h1>
     </header>
     
     <section class="meme-container">
-            <img src="meme-imgs/2.jpg" >
+            <img src="meme-imgs/2.jpg" onclick="onClickImg(1)">
             <img src="meme-imgs/003.jpg" >
             <img src="meme-imgs/004.jpg" >
             <img src="meme-imgs/005.jpg" >
@@ -33,7 +33,7 @@
 
 
         <canvas class="canvas"></canvas>
-        
+
         <form action="">
             <input type="text" placeholder="Top text">
             <input type="text" placeholder="Bottom text">

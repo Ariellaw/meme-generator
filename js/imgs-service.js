@@ -1,12 +1,12 @@
 'use strict'
 const IMGS_KEY = 'imgs';
-var gImgs =[];
+var gMemes =[];
 // var img = createImg('img/popo.jpg',['happy']);
 // console.log(img);
 
-function  {
+function createImg(url,keywords)  {
     return {
-        id: makeId(),
+        id: 1,
         url,
         keywords,
     }
@@ -14,9 +14,7 @@ function  {
 
 
 function createImgs(){
-    if(!localStorage.)    
-else{
-    gImgs =
+    gMemes =
      [ 
         createImg('meme-imgs/2.jpg',['happy','dancing', 'carefree']),
         createImg('meme-imgs/003.jpg', ['trump', 'angry', 'stupid','powerful']),
@@ -30,5 +28,5 @@ else{
 }
 
 function getMemes(){
-    return  gImgs;
+    return  gMemes;
 }
