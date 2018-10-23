@@ -24,10 +24,11 @@ function renderImgs(value = 'all') {
 }
 
 function onClickImg(imgId) {
-    var meme = getImgById(imgId);
-    gDraw.img = meme;
+    var memeImg = getImgById(imgId);
+    console.log('image size', memeImg, memeImg.url.clientWidth, memeImg.clientHeight)
+    gDraw.img = memeImg;
     renderCanvas()
-    openEditor(meme);
+    openEditor(memeImg);
 }
 
 function onWrighting(ev) {
@@ -50,17 +51,12 @@ function drawTxt() {
     gCtx.font = "50px Ariel";
     gCtx.fillText(gDraw.text, 70, 70);
     gCtx.stroke();
-
+}
 
 function onFilterMemeImgs(el) {
     setFilter(el.value);
     renderImgs(el.value);
-    el.placeholder = el.value;
-    el.value = '';
 }
 
-function onClickImg(imgId) {
-    var meme = getImgById(imgId);
-    openEditor(meme);
-}
+
 

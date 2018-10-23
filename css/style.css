@@ -6,7 +6,9 @@ body {
     margin: 0;
 }
 
-
+img{
+    max-width: 100%;
+}
 /* Helpers */
 
 .flex {
@@ -32,12 +34,14 @@ body {
         width:150px;
         height:150px;
         margin: 5px;
+    }
 }
 @media (max-width: 700px){
     .memeImg{
         width:100px;
         height:100px;
         margin: 3px;
+    }
 }
 @media (max-width: 400px){
     .memeImg{
@@ -55,4 +59,16 @@ form{
 
 .edit-meme-container {
     display: none;
+    display:flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+@media (min-width: 600px){
+    .edit-meme-container {
+        flex-direction: row;
+    }
+}
+.canvas{
+    
 }

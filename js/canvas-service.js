@@ -1,6 +1,5 @@
 'use strict'
 
-console.log('canvas');
 
 var gCanvas;
 var gCtx;
@@ -8,8 +7,8 @@ var gCtx;
 
 function createCanvas(meme) {
     gCanvas = document.querySelector('.canvas');
-    gCanvas.height = window.innerHeight-110;
-    gCanvas.width = window.innerWidth-110;
+    // gCanvas.height = 300;
+    // gCanvas.width = 300;
     gCtx = gCanvas.getContext('2d');
 }
 
@@ -20,6 +19,3 @@ function openEditor(meme) {
     $('.meme-container').hide();
 }
 
-// function setImgToDraw(meme) {
-//     gDraw.img = meme;
-// }
