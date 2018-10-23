@@ -3,7 +3,8 @@
 var gDraw = {
     img: 'img/002.jepg',
     text: 'Try me',
-    font: 'impact'
+    font: 'impact',
+    fontSize: '20px'
 }
 
 function init() {
@@ -16,7 +17,11 @@ function renderImgs(value = 'all') {
     var elMemeContainer = document.querySelector('.meme-container');
     var memeImgs = filterMemeImages(value);
     var strHTML = memeImgs.map(img => {
+<<<<<<< HEAD
         return `<img onclick="onClickImg(${img.id})" class="memeImg" id="${img.id}" src="${img.url}" >`
+=======
+        return `<img onclick="onClickImg('${img.id}')" class="memeImg" id="${img.id}" src="${img.url}" >`
+>>>>>>> 664abf39979c6317c621012f16a22bba3476797a
     })
     elMemeContainer.innerHTML = strHTML;
 }
@@ -49,7 +54,7 @@ function drawImg() {
 }
 
 function drawTxt() {
-    gCtx.font = "50px Impact";
+    gCtx.font = `${gDraw.fontSize} ${gDraw.font}`;
     gCtx.fillText(gDraw.text, 70, 70);
     gCtx.stroke();
 }
