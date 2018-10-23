@@ -16,15 +16,15 @@ function renderImgs(value = 'all') {
     var elMemeContainer = document.querySelector('.meme-container');
     var memeImgs = filterMemeImages(value);
     var strHTML = memeImgs.map(img => {
-        return `<img onclick="onClickImg(this)" class="memeImg" id="${img.id}" src="${img.url}" >`
+        return `<img onclick="onClickImg(${img.id})" class="memeImg" id="${img.id}" src="${img.url}" >`
     })
     elMemeContainer.innerHTML = strHTML;
 }
 
 function onClickImg(imgId) {
     var memeImg = getImgById(imgId);
-    console.log('image size', memeImg, memeImg.url.clientWidth, memeImg.clientHeight)
     gDraw.img = memeImg;
+    console.log(memeImg);
     renderCanvas()
     openEditor(memeImg);
 }
