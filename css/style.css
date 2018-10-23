@@ -25,3 +25,7 @@ body {
     margin: 10px;
     border-radius: 20px;
 }
+
+.edit-meme-container {
+    display: none;
+}

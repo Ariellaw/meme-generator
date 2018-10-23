@@ -6,14 +6,14 @@ function init() {
     createImgs();
     renderImgs();
 }
+
 function renderImgs() {
     var elMemeContainer = document.querySelector('.meme-container');
     var memeImgs = getMemes();
     console.log(memeImgs);
     var strHTML = memeImgs.map(img => {
-        return `<img onclick="onClickImg(${img.id})" class="memeImg" id=${img.id} src=${img.url} >`
+        return `<img onclick="onClickImg('${img.id}')" class="memeImg" id="${img.id}" src="${img.url}" >`
     })
-    console.log(strHTML);
     elMemeContainer.innerHTML = strHTML;
 }
 
@@ -33,15 +33,12 @@ var gMeme = {
 
 
 function onClickImg(imgId) {
-    var meme = getImgById(`${imgId}`);
-    // console.log(meme.url);
-    
-    createCanvas(meme)
-    // openEditor();
+    var meme = getImgById(imgId);
+    openEditor(meme);
 }
 
 function getImgById(imgId) {
-    return gMemes.find(meme => {
-        return meme.id === +imgId;
+   return gMemes.find(meme => {
+        return meme.id === imgId;
     })
 }
