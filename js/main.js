@@ -17,11 +17,7 @@ function renderImgs(value = 'all') {
     var elMemeContainer = document.querySelector('.meme-container');
     var memeImgs = filterMemeImages(value);
     var strHTML = memeImgs.map(img => {
-<<<<<<< HEAD
-        return `<img onclick="onClickImg(${img.id})" class="memeImg" id="${img.id}" src="${img.url}" >`
-=======
         return `<img onclick="onClickImg('${img.id}')" class="memeImg" id="${img.id}" src="${img.url}" >`
->>>>>>> 664abf39979c6317c621012f16a22bba3476797a
     })
     elMemeContainer.innerHTML = strHTML;
 }
