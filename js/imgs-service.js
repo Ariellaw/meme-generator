@@ -1,8 +1,12 @@
 'use strict'
 const IMGS_KEY = 'imgs';
+<<<<<<< HEAD
 
 
 
+=======
+var gImgs =[];
+>>>>>>> 529a4b999f4678017af6e84c537fcdae7f396d96
 // var img = createImg('img/popo.jpg',['happy']);
 // console.log(img);
 
@@ -13,6 +17,7 @@ function  {
         keywords,
     }
 }
+<<<<<<< HEAD
 
 
 function createImgs(){
@@ -34,3 +39,5 @@ else{
 function getMemes(){
     return  gImgs;
 }
+=======
+>>>>>>> 529a4b999f4678017af6e84c537fcdae7f396d96
