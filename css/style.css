@@ -4,7 +4,6 @@
 
 body {
     margin: 0;
-    background-color: pink;
 }
 
 
@@ -19,7 +18,7 @@ body {
     justify-content: center;
 }
 
-img{
+.memeImg{
     width:400px;
     height: 400px;
     object-fit: cover;
