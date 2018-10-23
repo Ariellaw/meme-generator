@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Impact;
+    src: url(../fonts/impact/impact.ttf);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -5,7 +10,13 @@
 body {
     margin: 0;
 }
-
+.canvas {
+    width: 50vw;
+    height :auto ;
+}
+/* img { */
+    /* object-fit: contain; */
+/* } */
 
 /* Helpers */
 
@@ -38,6 +49,11 @@ body {
         width:100px;
         height:100px;
         margin: 3px;
+    }
+    .canvas {
+        width: 80vw;
+    }
+    
 }
 @media (max-width: 400px){
     .memeImg{
@@ -48,7 +64,12 @@ body {
     .meme-container{
         justify-content: flex-start;
     }
+    .canvas {
+        width: 90vw;
+        height: 50vh;
+    }
 }
+
 form{
     margin:50px;
 }

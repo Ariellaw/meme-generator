@@ -1,11 +1,9 @@
 'use strict'
 
-console.log('main');
-
 var gDraw = {
     img: 'img/002.jepg',
     text: 'Try me',
-    // font: ''
+    font: 'impact'
 }
 
 function init() {
@@ -13,18 +11,18 @@ function init() {
     renderImgs();
     createCanvas();
 }
+
 function renderImgs(value = 'all') {
     var elMemeContainer = document.querySelector('.meme-container');
     var memeImgs = filterMemeImages(value);
-    console.log(memeImgs);
     var strHTML = memeImgs.map(img => {
-        return `<img onclick="onClickImg('${img.id}')" class="memeImg" id="${img.id}" src="${img.url}" >`
+        return `<img onclick="onClickImg(this)" class="memeImg" id="${img.id}" src="${img.url}" >`
     })
     elMemeContainer.innerHTML = strHTML;
 }
 
-function onClickImg(imgId) {
-    var meme = getImgById(imgId);
+function onClickImg(elImg) {
+    var meme = getImgById(elImg.id);
     gDraw.img = meme;
     renderCanvas()
     openEditor(meme);
@@ -43,14 +41,17 @@ function renderCanvas() {
 
 function drawImg() {
     var currMeme = document.getElementById(`${gDraw.img.id}`);
-    gCtx.drawImage(currMeme, 10, 10);
+    // $(".canvas").outerHeight($(window).height()-$(".canvas").offset().top- Math.abs($(".canvas").outerHeight(true) - $(".canvas").outerHeight()));
+    gCtx.drawImage(currMeme, 0, 0, gCanvas.width, gCanvas.height,     // source rectangle
+        0, 0, currMeme.width, currMeme.height)
+    // gCtx.drawImage(currMeme, 10, 10);
 }
 
 function drawTxt() {
-    gCtx.font = "50px Ariel";
+    gCtx.font = "50px Impact";
     gCtx.fillText(gDraw.text, 70, 70);
     gCtx.stroke();
-
+}
 
 function onFilterMemeImgs(el) {
     setFilter(el.value);
@@ -58,9 +59,4 @@ function onFilterMemeImgs(el) {
     el.placeholder = el.value;
     el.value = '';
 }
-
-function onClickImg(imgId) {
-    var meme = getImgById(imgId);
-    openEditor(meme);
-}
-
+// Use the common font meme "impact" with stroke/shadow

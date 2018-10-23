@@ -1,6 +1,4 @@
 'use strict'
-console.log('util service');
-
 function makeId() {
     var length = 6;
     var txt = '';
@@ -23,6 +21,6 @@ function saveToStorage(key, val) {
 
 function getImgById(imgId) {
     return gMemes.find(meme => {
-         return meme.id === imgId;
-     })
- }
+        return meme.id === imgId;
+    })
+}
