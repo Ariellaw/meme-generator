@@ -1,6 +1,6 @@
 'use strict'
 const IMGS_KEY = 'imgs';
-
+var gImgs =[];
 // var img = createImg('img/popo.jpg',['happy']);
 // console.log(img);
 
@@ -10,8 +10,4 @@ function createImg(url,keywords) {
         url,
         keywords,
     }
-}
-
-function createImgs(){
-    if(!localStorage.)    
 }

@@ -9,3 +9,11 @@ body {
 .flex {
     display: flex;
 }
+
+img {
+    /* display: none; */
+}
+
+.edit-meme {
+    display: none;
+}
