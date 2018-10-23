@@ -11,9 +11,8 @@ function renderImgs(value = 'all') {
     var memeImgs = filterMemeImages(value);
     console.log(memeImgs);
     var strHTML = memeImgs.map(img => {
-        return `<img onclick="onClickImg(${img.id})" class="memeImg" id=${img.id} src=${img.url} >`
+        return `<img onclick="onClickImg('${img.id}')" class="memeImg" id="${img.id}" src="${img.url}" >`
     })
-    console.log(strHTML);
     elMemeContainer.innerHTML = strHTML;
 }
 
@@ -32,10 +31,7 @@ var gMeme = {
 
 
 
-function onPickImg(el) {
-    openEditor(el)
-    console.log(el.src);
-}
+
 
 function onFilterMemeImgs(el) {
     setFilter(el.value);
@@ -44,6 +40,13 @@ function onFilterMemeImgs(el) {
     el.value = '';
 }
 
-function onClickImg() {
+function onClickImg(imgId) {
+    var meme = getImgById(imgId);
+    openEditor(meme);
+}
 
+function getImgById(imgId) {
+   return gMemes.find(meme => {
+        return meme.id === imgId;
+    })
 }

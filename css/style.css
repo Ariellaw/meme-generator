@@ -52,3 +52,7 @@ body {
 form{
     margin:50px;
 }
+
+.edit-meme-container {
+    display: none;
+}
