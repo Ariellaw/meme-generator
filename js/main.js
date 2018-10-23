@@ -2,7 +2,6 @@
 
 console.log('main');
 
-<<<<<<< HEAD
 function renderImgs(){
     var elMemeContainer = document.querySelector('.meme-container');
     var memeImgs =  getMemes();
@@ -12,15 +11,6 @@ function renderImgs(){
     elMemeContainer.innerHTML = memeDisplay;
 }
 
-=======
-function init(){
-    createCanvas()
-}
-
-
-
-
->>>>>>> 529a4b999f4678017af6e84c537fcdae7f396d96
 var gImgs = [{ id: 1, url: 'img/popo.jpg', keywords: ['happy'] }];
 var gMeme = {
     selectedImgId: 5,

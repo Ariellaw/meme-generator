@@ -13,7 +13,6 @@ body {
 .flex {
     display: flex;
 }
-<<<<<<< HEAD
 .meme-container{
     display: flex;
     flex-wrap: wrap;
@@ -26,13 +25,4 @@ img{
     object-fit: cover;
     margin: 10px;
     border-radius: 20px;
-=======
-
-img {
-    /* display: none; */
-}
-
-.edit-meme {
-    display: none;
->>>>>>> 529a4b999f4678017af6e84c537fcdae7f396d96
 }
