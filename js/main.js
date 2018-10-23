@@ -13,10 +13,9 @@ function init() {
     renderImgs();
     createCanvas();
 }
-
-function renderImgs() {
+function renderImgs(value = 'all') {
     var elMemeContainer = document.querySelector('.meme-container');
-    var memeImgs = getMemes();
+    var memeImgs = filterMemeImages(value);
     console.log(memeImgs);
     var strHTML = memeImgs.map(img => {
         return `<img onclick="onClickImg('${img.id}')" class="memeImg" id="${img.id}" src="${img.url}" >`
@@ -51,5 +50,17 @@ function drawTxt() {
     gCtx.font = "50px Ariel";
     gCtx.fillText(gDraw.text, 70, 70);
     gCtx.stroke();
+
+
+function onFilterMemeImgs(el) {
+    setFilter(el.value);
+    renderImgs(el.value);
+    el.placeholder = el.value;
+    el.value = '';
+}
+
+function onClickImg(imgId) {
+    var meme = getImgById(imgId);
+    openEditor(meme);
 }
 

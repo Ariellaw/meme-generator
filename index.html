@@ -17,6 +17,17 @@
         <h1>MEME</h1>
     </header>
 
+    <form onsubmit="return false;">
+        <input list="keyword-selector" name="keyword" onchange="onFilterMemeImgs(this)" placeholder="puppy">
+        <datalist id="keyword-selector">
+            <option value="happy">
+            <option value="dancing">
+            <option value="sleeping">
+            <option value="puppy">
+            <option value="cat">
+            <option value="all">
+        </datalist>
+    </form>
     <section class="meme-container">
     </section>
 

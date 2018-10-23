@@ -19,11 +19,38 @@ body {
 }
 
 .memeImg{
-    width:400px;
-    height: 400px;
+    width:200px;
+    height:200px;
     object-fit: cover;
     margin: 10px;
     border-radius: 20px;
+    min-width: 50px;
+    min-height: 50px;
+}
+@media (max-width: 800px){
+    .memeImg{
+        width:150px;
+        height:150px;
+        margin: 5px;
+}
+@media (max-width: 700px){
+    .memeImg{
+        width:100px;
+        height:100px;
+        margin: 3px;
+}
+@media (max-width: 400px){
+    .memeImg{
+        width:75px;
+        height:75px;
+        margin: 3px;
+    }
+    .meme-container{
+        justify-content: flex-start;
+    }
+}
+form{
+    margin:50px;
 }
 
 .edit-meme-container {
