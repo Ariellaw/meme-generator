@@ -31,10 +31,19 @@ function renderImgs(value = 'all') {
 function onClickImg(elImg, imgId) {
     var memeImg = getImgById(imgId);
     var ratio = elImg.naturalWidth / elImg.naturalHeight;
-    gCanvas.height = gCanvas.height * ratio;
+    var ratioh = elImg.naturalHeight / elImg.naturalWidth;
+    console.log('ratio', ratio)
+    console.log('image proportions', 'width', elImg.naturalWidth, 'height', elImg.naturalHeight);
+    console.log('screen', window.innerWidth, window.innerHeight)
+
+    // gCanvas.height = gCanvas.height * ratio;
     if (window.innerWidth > elImg.naturalWidth) {
-        gCanvas.height = elImg.naturalHeight;
+        gCanvas.width = elImg.naturalWidth;
+    } else {
+        gCanvas.width = window.innerWidth*.8;
     }
+    gCanvas.height = gCanvas.width * ratioh;
+
     // getImgRatio(elImg)
 
     gDraw.img = memeImg;
@@ -84,7 +93,7 @@ function onChangeFont(val) {
 
 function onClickCanvas(event) {
     console.log(event);
-    
+
     let x = event.screenX;
     let y = event.screenY;
     switch (gDraw.brush) {

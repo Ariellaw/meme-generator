@@ -15,7 +15,7 @@ function openEditor() {
     
     $('.font-type').val('Font')
     // $('.edit-meme-container').show();
-    document.querySelector('.edit-meme-container').style.display = 'flex'
+    document.querySelector('.edit-meme-container').style.display = 'block'
     $('.editor-btn-container').show();
     $('.meme-container').hide();
     $('.keyword-selector').hide();
