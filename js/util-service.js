@@ -24,3 +24,9 @@ function getImgById(imgId) {
         return meme.id === imgId;
     })
 }
+
+function getImgRatio(img){
+    var height = img.naturalHeight;
+    console.log(height);
+    
+}

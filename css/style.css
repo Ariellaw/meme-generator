@@ -2,7 +2,7 @@
     font-family: Impact;
     src: url(../fonts/impact/impact.ttf);
 }
-
+/* Basic */
 * {
     box-sizing: border-box;
 }
@@ -10,23 +10,35 @@
 body {
     margin: 0;
 }
-.canvas {
-    width: 50vw;
-    height :auto ;
+h1 {
+    margin: 0;
 }
-/* img { */
-    /* object-fit: contain; */
-/* } */
 
+.header {
+    background: plum;
+    margin-bottom: 10px; 
+}
 
 img{
     max-width: 100%;
 }
+
+.btn {
+    cursor: pointer;
+    border: 0;
+}
+
 /* Helpers */
 
 .flex {
     display: flex;
 }
+.space-between {
+    justify-content:  space-between;
+}
+
+
+/* meme */
 .meme-container{
     display: flex;
     flex-wrap: wrap;
@@ -34,6 +46,8 @@ img{
 }
 
 .memeImg{
+    object-fit: fill;
+    cursor: pointer;
     width:200px;
     height:200px;
     object-fit: cover;
@@ -42,6 +56,46 @@ img{
     min-width: 50px;
     min-height: 50px;
 }
+
+.memeImg:hover{
+    outline: 4px solid palevioletred;
+    -moz-outline-radius: 25px; 
+}
+
+/* Editor */
+
+.edit-meme-container {
+    margin: 0 auto;
+    display: none;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 50vw;
+}
+
+.editor-header{
+    background: black;
+    margin-bottom: 10px; 
+    height: 50px;
+    align-items: center;
+}
+.editor-header  .btn {
+    background: pink;
+    padding: 3px;
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.editor-btn-container {
+    display: none;
+}
+
+.canvas {
+    margin-bottom: 10px; 
+}
+
+
 @media (max-width: 800px){
     .memeImg{
         width:150px;
@@ -54,13 +108,31 @@ img{
         width:100px;
         height:100px;
         margin: 3px;
-    }
-    .canvas {
-        width: 80vw;
-    }
-    
+    }    
 }
 @media (max-width: 400px){
+    h1 {
+        font-size: 20px;
+        padding: 0;
+    }
+
+    .keyword-selector{
+        margin: 0;
+        padding: 0;
+        display: inline;
+    }
+    .header {
+        height: 70px;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .edit-meme-container{
+        width: 80%;
+        /* margin: 0 auto; */
+    }
+    
     .memeImg{
         width:75px;
         height:75px;
@@ -69,28 +141,13 @@ img{
     .meme-container{
         justify-content: flex-start;
     }
-    .canvas {
-        width: 90vw;
-        height: 50vh;
-    }
 }
 
 form{
     margin:50px;
 }
 
-.edit-meme-container {
-    display: none;
-    display:flex;
-    justify-content: space-around;
-    flex-direction: column;
+@media (min-width: 600px){
 }
 
-@media (min-width: 600px){
-    .edit-meme-container {
-        flex-direction: row;
-    }
-}
-.canvas{
-    
-}
+

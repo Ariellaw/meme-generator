@@ -14,28 +14,39 @@
 
 <body onload="init()">
     <header class="header flex">
-        <h1>MEME</h1>
+        <h1>MEME Editor</h1>
+        <form onsubmit="return false;">
+            <!-- <input list="keyword-selector" name="keyword" onchange="onFilterMemeImgs(this)" placeholder="puppy"> -->
+            <select class="keyword-selector" onchange="onFilterMemeImgs(this)" value="all" placeholder="all">
+                <option value="all"> All </option>
+                <option value="happy"> Happy </option>
+                <option value="dancing"> Dancing </option>
+                <option value="sleeping"> Sleeping </option>
+                <option value="puppy"> Puppy </option>
+                <option value="cat"> Cat </option>
+            </select>
+        </form>
+
     </header>
 
-    <form onsubmit="return false;">
-        <!-- <input list="keyword-selector" name="keyword" onchange="onFilterMemeImgs(this)" placeholder="puppy"> -->
-        <select id="keyword-selector" onchange="onFilterMemeImgs(this)" value="all" placeholder="all">
-            <option value="all"> All </option>
-            <option value="happy"> Happy </option>
-            <option value="dancing"> Dancing </option>
-            <option value="sleeping"> Sleeping </option>
-            <option value="puppy"> Puppy </option>
-            <option value="cat"> Cat </option>
-        </select>
-    </form>
-    
     <section class="meme-container">
     </section>
 
-
-
     <section class="edit-meme-container">
-        <canvas class="canvas" ></canvas>
+        <div class="editor-header flex space-between">
+            <div class="editor-btn-container">
+                <!-- <input class="font-size" type="range" min="15" max="100" onchange="onChangeFontSize(this.value)"> -->
+                <button class="btn btn-rize-font" onclick="onChangeFontSize('+')">+</button>
+                <button class="btn btn-rize-font" onclick="onChangeFontSize('-')">-</button>
+                <select class="font-type" onchange="onChangeFont(this.value)">
+                        <option value="Font" hidden>Font</option>
+                        <option value="Impact">Impact</option>
+                        <option value="serif">Serif</option>
+                    </select>
+                </div>
+                <button class="btn btn-close-editor" onclick="onCloseEditor()">X</button>
+        </div>
+        <canvas class="canvas" onclick="onClickCanvas(event)"></canvas>
 
         <input class="top-txt" type="text" placeholder="Top text" oninput="onWrighting()">
     </section>

@@ -3,8 +3,14 @@
 var gDraw = {
     img: 'img/002.jepg',
     text: 'Try me',
-    font: 'impact',
-    fontSize: '20px'
+    font: {
+        type: 'Impact',
+        posX: 70,
+        posY: 70,
+    },
+    fontSize: '20',
+    fontColor: 'white',
+    brush: 'Font'
 }
 
 function init() {
@@ -17,16 +23,25 @@ function renderImgs(value = 'all') {
     var elMemeContainer = document.querySelector('.meme-container');
     var memeImgs = filterMemeImages(value);
     var strHTML = memeImgs.map(img => {
-        return `<img onclick="onClickImg('${img.id}')" class="memeImg" id="${img.id}" src="${img.url}" >`
+        return `<div class="memeimg-container"><img onclick="onClickImg(this,'${img.id}')" class="memeImg" id="${img.id}" src="${img.url}" ></div>`
     })
     elMemeContainer.innerHTML = strHTML;
 }
 
-function onClickImg(imgId) {
+function onClickImg(elImg, imgId) {
     var memeImg = getImgById(imgId);
+    var ratio = elImg.naturalWidth / elImg.naturalHeight;
+    gCanvas.height = gCanvas.height * ratio;
+    if (window.innerWidth > elImg.naturalWidth) {
+        gCanvas.height = elImg.naturalHeight;
+    }
+    // getImgRatio(elImg)
+
     gDraw.img = memeImg;
+
+
     renderCanvas()
-    openEditor(memeImg);
+    openEditor();
 }
 
 function onWrighting(ev) {
@@ -42,16 +57,14 @@ function renderCanvas() {
 
 function drawImg() {
     var currMeme = document.getElementById(`${gDraw.img.id}`);
-    // $(".canvas").outerHeight($(window).height()-$(".canvas").offset().top- Math.abs($(".canvas").outerHeight(true) - $(".canvas").outerHeight()));
-    gCtx.drawImage(currMeme, 0, 0, gCanvas.width, gCanvas.height,     // source rectangle
-        0, 0, currMeme.width, currMeme.height)
-    // gCtx.drawImage(currMeme, 10, 10);
+    gCtx.drawImage(currMeme, 0, 0, gCanvas.width, gCanvas.height);
 }
 
 function drawTxt() {
-    gCtx.font = `${gDraw.fontSize} ${gDraw.font}`;
-    gCtx.fillText(gDraw.text, 70, 70);
-    gCtx.stroke();
+    gCtx.fillStyle = gDraw.fontColor;
+    gCtx.font = `${gDraw.fontSize}px ${gDraw.font.type}`;
+    gCtx.fillText(gDraw.text, gDraw.font.posX, gDraw.font.posY);
+    gCtx.strokeText(gDraw.text, 100, 100);
 }
 
 function onFilterMemeImgs(el) {
@@ -59,5 +72,30 @@ function onFilterMemeImgs(el) {
     renderImgs(el.value);
 }
 
+function onChangeFontSize(val) {
+    console.log(gDraw.fontSize);
+    if (val === '-') gDraw.fontSize = gDraw.fontSize - 2;
+    else gDraw.fontSize = gDraw.fontSize + 2;
+}
 
+function onChangeFont(val) {
+    gDraw.font = val;
+}
 
+function onClickCanvas(event) {
+    console.log(event);
+    
+    let x = event.screenX;
+    let y = event.screenY;
+    switch (gDraw.brush) {
+        case 'Font':
+            gDraw.font.posX = +x;
+            gDraw.font.posY = +y;
+            renderCanvas()
+            break;
+
+        default:
+            break;
+    }
+    console.log('x:', x, 'y', y);
+}
