@@ -44,6 +44,7 @@ h1 {
     grid-template-columns: repeat(6,1fr);
     grid-template-rows: 100%;
     grid-gap: 10px;
+    margin: 0 10%;
 }
 .editor-header{
     background: black;
@@ -90,7 +91,6 @@ h1 {
         justify-content: center;
     }
     
-
     .editor-header {
         grid-column: 1;
         grid-row: 2;

@@ -5,13 +5,14 @@ var gCtx;
 
 var gDraw = {
     img: 'img/002.jepg',
-    text: 'Try me',
+    text: 'Place the text and start wrighting !',
     font: {
         type: 'Impact',
         posX: 70,
         posY: 70,
+        size: '30',
+        shadow: false,
     },
-    fontSize: '20',
     fontColor: 'white',
     brush: 'Font'
 }
@@ -34,25 +35,15 @@ function renderImgs(value = 'All') {
 
 function onClickImg(elImg, imgId) {
     var memeImg = getImgById(imgId);
-    var ratio = elImg.naturalWidth / elImg.naturalHeight;
-    var ratioh = elImg.naturalHeight / elImg.naturalWidth;
-    console.log('ratio', ratio)
-    console.log('image proportions', 'width', elImg.naturalWidth, 'height', elImg.naturalHeight);
-    console.log('screen', window.innerWidth, window.innerHeight)
+    var ratio = elImg.naturalHeight / elImg.naturalWidth;
 
-    // gCanvas.height = gCanvas.height * ratio;
     if (window.innerWidth > elImg.naturalWidth) {
         gCanvas.width = elImg.naturalWidth;
     } else {
         gCanvas.width = window.innerWidth * .9;
     }
-    gCanvas.height = gCanvas.width * ratioh * .85;
-
-    // getImgRatio(elImg)
-
+    gCanvas.height = gCanvas.width * ratio * .85;
     gDraw.img = memeImg;
-
-
     renderCanvas()
     openEditor();
 }
@@ -75,9 +66,11 @@ function drawImg() {
 
 function drawTxt() {
     gCtx.fillStyle = gDraw.fontColor;
-    gCtx.font = `${gDraw.fontSize}px ${gDraw.font.type}`;
+    gCtx.font = `${gDraw.font.size}px ${gDraw.font.type}`;
     gCtx.fillText(gDraw.text, gDraw.font.posX, gDraw.font.posY);
-    gCtx.strokeText(gDraw.text, 100, 100);
+    if (gDraw.font.shadow) {
+        gCtx.strokeText(gDraw.text, gDraw.font.posX, gDraw.font.posY);
+    }
 }
 
 function onFilterMemeImgs(el) {
@@ -89,17 +82,17 @@ function onFilterMemeImgs(el) {
 }
 
 function onChangeFontSize(val) {
-    console.log(gDraw.fontSize);
-    if (val === '-') gDraw.fontSize = gDraw.fontSize - 2;
-    else gDraw.fontSize = gDraw.fontSize + 2;
+    if (val === '-') gDraw.font.size = gDraw.font.size - 2;
+    else gDraw.font.size = +gDraw.font.size + 2;
+    renderCanvas();
 }
 
 function onChangeFont(val) {
-    gDraw.font = val;
+    gDraw.font.type = val;
+    renderCanvas();
 }
 
 function onClickCanvas(event) {
-    // console.log(event);
     var e = $('.canvas')
     var offset = e.offset();
     console.log({ offset, clientX: event.clientX, clientY: event.clientY });
@@ -118,6 +111,13 @@ function onClickCanvas(event) {
     }
 }
 
+function onAddLine() {
+    return document.querySelector('.txt-line').innerHTML += '<input class="txt-line" type="text" placeholder="Text line" oninput="onWrighting()"></input>';
+}
+
+function onChangeShadow() {
+    return gDraw.font.shadow = !gDraw.font.shadow;
+}
 function createCanvas() {
     gCanvas = document.querySelector('.canvas');
     gCanvas.width = window.innerWidth - 100;
@@ -126,12 +126,8 @@ function createCanvas() {
 }
 
 function openEditor() {
-
     $('.font-type').val('Font')
-    // $('.edit-meme-container').show();
     document.querySelector('.edit-meme-container').style.display = 'grid'
-    document.querySelector('.editor-btn-container').style.display = 'flex'
-    // $('.editor-btn-container').show();
     $('.meme-container').hide();
     $('.keyword-selector').hide();
 }
