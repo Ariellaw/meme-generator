@@ -38,12 +38,8 @@ function onClickImg(elImg, imgId) {
     // getImgRatio(elImg)
 
     gDraw.img = memeImg;
-<<<<<<< HEAD
 
 
-=======
-    console.log(memeImg);
->>>>>>> 29500d6b074b7a2421d1b80c4ff0ff6ae12d6ef9
     renderCanvas()
     openEditor();
 }
