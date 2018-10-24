@@ -73,6 +73,7 @@ img{
     grid-template-columns: repeat(6,1fr);
     grid-template-rows: 100%;
     grid-gap: 10px;
+    margin: 0 10%;
 }
 .editor-header{
     background: black;
@@ -101,7 +102,9 @@ img{
     grid-column: 3/ span 5;
 }
 
-
+.btn-toggle-shadow: {
+    background: greenyellow;
+}
 @media (max-width: 800px){
     .memeImg{
         width:150px;
@@ -134,10 +137,9 @@ img{
         justify-content: center;
     }
     
-    /* .edit-meme-container{
-        width: 80%;
-        /* margin: 0 auto; */
-    /* }  */
+     .edit-meme-container{
+        margin: 0 5%;
+     }
     
     .memeImg{
         width:75px;

@@ -12,18 +12,16 @@ function createCanvas() {
 }
 
 function openEditor() {
-    
-    $('.font-type').val('Font')
-    // $('.edit-meme-container').show();
+    $('.top-txt').show();
+    $('.top-txt').val('');
+    $('.font-type').val('Font');
     document.querySelector('.edit-meme-container').style.display = 'grid'
-    document.querySelector('.editor-btn-container').style.display = 'flex'
-    // $('.editor-btn-container').show();
     $('.meme-container').hide();
     $('.keyword-selector').hide();
 }
 
 function onCloseEditor(){
-    $('.top-txt').val('');
+    gDraw.text = 'Place the text and start wrighting !';        
     $('.top-txt').hide();
     $('.edit-meme-container').hide();
     $('.editor-btn-container').hide();

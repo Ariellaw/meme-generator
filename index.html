@@ -34,18 +34,21 @@
 
     <section class="edit-meme-container">
         <div class="editor-header flex">
-                <button class="btn btn-close-editor" onclick="onCloseEditor()">X</button>
-            <div class="editor-btn-container">
-                <!-- <input class="font-size" type="range" min="15" max="100" onchange="onChangeFontSize(this.value)"> -->
+            <button class="btn btn-close-editor" onclick="onCloseEditor()">X</button>
+            <div class="font-container">
                 <button class="btn btn-rize-font" onclick="onChangeFontSize('+')">+</button>
                 <button class="btn btn-rize-font" onclick="onChangeFontSize('-')">-</button>
                 <select class="font-type" onchange="onChangeFont(this.value)">
-                        <option value="Font" hidden>Font</option>
-                        <option value="Impact">Impact</option>
-                        <option value="serif">Serif</option>
-                    </select>
+                    <option value="Font" hidden>Font</option>
+                    <option value="Impact">Impact</option>
+                    <option value="serif">Serif</option>
+                </select>
+                <button class="btn btn-toggle-shadow" onclick="onChangeShadow()">T</button>
+                <div class="txt-line">
                     <input class="top-txt" type="text" placeholder="Top text" oninput="onWrighting()">
+                    <button class="add-txt" onclick="onAddLine()">Add text line</button>
                 </div>
+            </div>
         </div>
         <canvas class="canvas" onclick="onClickCanvas(event)"></canvas>
 
