@@ -20,7 +20,7 @@ h1 {
 }
 
 img{
-    max-width: 100%;
+    /* max-width: 100%; */
 }
 
 .btn {
@@ -53,8 +53,8 @@ img{
     object-fit: cover;
     margin: 10px;
     border-radius: 20px;
-    min-width: 50px;
-    min-height: 50px;
+    /* min-width: 50px; */
+    /* min-height: 50px; */
 }
 
 .memeImg:hover{
@@ -69,7 +69,7 @@ img{
     display: none;
     justify-content: space-around;
     flex-direction: column;
-    width: 50vw;
+    /* width: 50vw; */
 }
 
 .editor-header{
@@ -129,7 +129,7 @@ img{
     }
     
     .edit-meme-container{
-        width: 80%;
+        /* width: 80%; */
         /* margin: 0 auto; */
     }
     
@@ -149,8 +149,5 @@ form{
 
 @media (min-width: 600px){
 }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 29500d6b074b7a2421d1b80c4ff0ff6ae12d6ef9

@@ -31,19 +31,20 @@ function renderImgs(value = 'all') {
 function onClickImg(elImg, imgId) {
     var memeImg = getImgById(imgId);
     var ratio = elImg.naturalWidth / elImg.naturalHeight;
-    gCanvas.height = gCanvas.height * ratio;
-    if (window.innerWidth > elImg.naturalWidth) {
-        gCanvas.height = elImg.naturalHeight;
+    var ratioH =  elImg.naturalHeight / elImg.naturalWidth;
+    
+    gCanvas.width = window.innerHeight/ratioH;
+    gCanvas.height = window.innerWidth/ratio;
+
+    if(window.innerWidth > elImg.naturalWidth) {
+    gCanvas.width = elImg.naturalWidth ;
+    // gCanvas.height = elImg.naturalWidth / ratio ;
+
     }
-    // getImgRatio(elImg)
 
     gDraw.img = memeImg;
-<<<<<<< HEAD
 
 
-=======
-    console.log(memeImg);
->>>>>>> 29500d6b074b7a2421d1b80c4ff0ff6ae12d6ef9
     renderCanvas()
     openEditor();
 }
@@ -87,10 +88,13 @@ function onChangeFont(val) {
 }
 
 function onClickCanvas(event) {
-    console.log(event);
+    // console.log(event);
+    var e = $('.canvas')
+    var offset = e.offset();
+    console.log({offset, clientX: event.clientX, clientY: event.clientY});
     
-    let x = event.screenX;
-    let y = event.screenY;
+    let x = event.clientX-offset.left;
+    let y =  event.clientY-offset.top;
     switch (gDraw.brush) {
         case 'Font':
             gDraw.font.posX = +x;
@@ -101,5 +105,4 @@ function onClickCanvas(event) {
         default:
             break;
     }
-    console.log('x:', x, 'y', y);
 }
