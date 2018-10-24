@@ -23,7 +23,8 @@ function init() {
     createCanvas();
 }
 
-function renderImgs(value = 'all') {
+function renderImgs(value = 'All') {
+
     var elMemeContainer = document.querySelector('.meme-container');
     var memeImgs = filterMemeImages(value);
     var strHTML = memeImgs.map(img => {
@@ -42,12 +43,7 @@ function onClickImg(elImg, imgId) {
         gCanvas.width = window.innerWidth * .9;
     }
     gCanvas.height = gCanvas.width * ratio * .85;
-
-    // getImgRatio(elImg)
-
     gDraw.img = memeImg;
-
-
     renderCanvas()
     openEditor();
 }
@@ -86,7 +82,6 @@ function onFilterMemeImgs(el) {
 }
 
 function onChangeFontSize(val) {
-    // console.log(gDraw.font.size);
     if (val === '-') gDraw.font.size = gDraw.font.size - 2;
     else gDraw.font.size = +gDraw.font.size + 2;
     renderCanvas();
@@ -98,7 +93,6 @@ function onChangeFont(val) {
 }
 
 function onClickCanvas(event) {
-    // console.log(event);
     var e = $('.canvas')
     var offset = e.offset();
     console.log({ offset, clientX: event.clientX, clientY: event.clientY });
@@ -132,12 +126,8 @@ function createCanvas() {
 }
 
 function openEditor() {
-
     $('.font-type').val('Font')
-    // $('.edit-meme-container').show();
     document.querySelector('.edit-meme-container').style.display = 'grid'
-    document.querySelector('.editor-btn-container').style.display = 'flex'
-    // $('.editor-btn-container').show();
     $('.meme-container').hide();
     $('.keyword-selector').hide();
 }

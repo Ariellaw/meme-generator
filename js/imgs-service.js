@@ -29,29 +29,29 @@ function createImgs() {
                 createImg('meme-imgs/5.jpg', ['Baby', 'Payback', 'All']),
                 createImg('meme-imgs/006.jpg', ['Cat', 'Sleeping', 'Computer', 'All']),
                 createImg('meme-imgs/8.jpg', ['Willy Wanka', 'Sarcasm', 'All']),
-                createImg('meme-imgs/9.jpg', ['Baby', 'Sneeky','All']),
-                createImg('meme-imgs/Oprah-You-Get-A.jpg', ['Famous', 'Revenge','All']),
-                createImg('meme-imgs/patrick.jpg', ['Famous', 'Laughing','All']),
-                createImg('meme-imgs/putin.jpg', ['Putin', 'Leader', 'Serious','All']),
+                createImg('meme-imgs/9.jpg', ['Baby', 'Sneeky', 'All']),
+                createImg('meme-imgs/Oprah-You-Get-A.jpg', ['Famous', 'Revenge', 'All']),
+                createImg('meme-imgs/patrick.jpg', ['Famous', 'Laughing', 'All']),
+                createImg('meme-imgs/putin.jpg', ['Putin', 'Leader', 'Serious', 'All']),
                 createImg('meme-imgs/X-Everywhere.jpg', ['Toys', 'concerned', 'All']),
             ];
     }
 }
+
 function getMemes() {
     return gMemes;
 }
-function setFilter(value){
+function setFilter(value) {
     gFilter = value;
 }
 
-function getFilter(){
+function getFilter() {
     return gFilter;
 }
 
-function filterMemeImages(value){
-    var filteredMemes = gMemes.filter(function(meme){
+function filterMemeImages(value) {
+    var filteredMemes = gMemes.filter(function (meme) {
         return meme.keywords.includes(value);
     });
-    console.log('meme', filteredMemes);
     return filteredMemes;
 }
