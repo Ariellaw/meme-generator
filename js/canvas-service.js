@@ -6,7 +6,12 @@ var gCtx;
 
 function createCanvas() {
     gCanvas = document.querySelector('.canvas');
+<<<<<<< HEAD
     gCanvas.width = window.innerWidth-100; 
+=======
+    // gCanvas.height = 300;
+    // gCanvas.width = 300;
+>>>>>>> 29500d6b074b7a2421d1b80c4ff0ff6ae12d6ef9
     gCtx = gCanvas.getContext('2d');
     
 }
