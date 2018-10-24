@@ -28,11 +28,7 @@ function init() {
     createCanvas();
 }
 
-<<<<<<< HEAD
-function renderImgs(value = 'All') {
-=======
 function renderImgs(value = 'all') {
->>>>>>> dc5b63ee544edcc72a5c779fe3e4d39b7039aa58
     var elMemeContainer = document.querySelector('.meme-container');
     var memeImgs = filterMemeImages(value);
     var strHTML = memeImgs.map(img => {
