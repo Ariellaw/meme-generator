@@ -17,6 +17,8 @@ h1 {
 .header {
     background: plum;
     margin-bottom: 10px; 
+    height: 50px;
+
 }
 
 img{
@@ -67,14 +69,18 @@ img{
 .edit-meme-container {
     display: none;
     text-align: center;
+    /* display: grid; */
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: 100%;
+    grid-gap: 10px;
 }
-
-
 .editor-header{
     background: black;
     margin-bottom: 10px; 
-    height: 50px;
     align-items: center;
+    grid-column: 1/span 2;
+    grid-row: 1/2;
+    flex-direction: column;
 }
 .editor-header  .btn {
     background: pink;
@@ -87,10 +93,12 @@ img{
 
 .editor-btn-container {
     display: none;
+    flex-direction: column; 
 }
 
 .canvas {
     margin-bottom: 10px; 
+    grid-column: 3/ span 5;
 }
 
 
@@ -138,6 +146,14 @@ img{
     }
     .meme-container{
         justify-content: flex-start;
+    }
+    .editor-header {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .canvas {
+        grid-column: 1;
+        grid-row: 1;
     }
 }
 

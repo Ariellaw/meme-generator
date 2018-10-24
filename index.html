@@ -33,7 +33,8 @@
     </section>
 
     <section class="edit-meme-container">
-        <div class="editor-header flex space-between">
+        <div class="editor-header flex">
+                <button class="btn btn-close-editor" onclick="onCloseEditor()">X</button>
             <div class="editor-btn-container">
                 <!-- <input class="font-size" type="range" min="15" max="100" onchange="onChangeFontSize(this.value)"> -->
                 <button class="btn btn-rize-font" onclick="onChangeFontSize('+')">+</button>
@@ -43,12 +44,11 @@
                         <option value="Impact">Impact</option>
                         <option value="serif">Serif</option>
                     </select>
+                    <input class="top-txt" type="text" placeholder="Top text" oninput="onWrighting()">
                 </div>
-                <button class="btn btn-close-editor" onclick="onCloseEditor()">X</button>
         </div>
         <canvas class="canvas" onclick="onClickCanvas(event)"></canvas>
 
-        <input class="top-txt" type="text" placeholder="Top text" oninput="onWrighting()">
     </section>
 
     <script src="lib/jquery/jquery.js"></script>

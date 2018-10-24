@@ -40,9 +40,9 @@ function onClickImg(elImg, imgId) {
     if (window.innerWidth > elImg.naturalWidth) {
         gCanvas.width = elImg.naturalWidth;
     } else {
-        gCanvas.width = window.innerWidth*.8;
+        gCanvas.width = window.innerWidth * .9;
     }
-    gCanvas.height = gCanvas.width * ratioh;
+    gCanvas.height = gCanvas.width * ratioh * .85;
 
     // getImgRatio(elImg)
 
@@ -95,10 +95,10 @@ function onClickCanvas(event) {
     // console.log(event);
     var e = $('.canvas')
     var offset = e.offset();
-    console.log({offset, clientX: event.clientX, clientY: event.clientY});
-    
-    let x = event.clientX-offset.left;
-    let y =  event.clientY-offset.top;
+    console.log({ offset, clientX: event.clientX, clientY: event.clientY });
+
+    let x = event.clientX - offset.left;
+    let y = event.clientY - offset.top;
     switch (gDraw.brush) {
         case 'Font':
             gDraw.font.posX = +x;
