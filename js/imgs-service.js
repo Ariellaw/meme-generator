@@ -33,7 +33,7 @@ function createImgs() {
                 createImg('meme-imgs/Oprah-You-Get-A.jpg', ['Famous', 'Revenge', 'All']),
                 createImg('meme-imgs/patrick.jpg', ['Famous', 'Laughing', 'All']),
                 createImg('meme-imgs/putin.jpg', ['Putin', 'Leader', 'Serious', 'All']),
-                createImg('meme-imgs/X-Everywhere.jpg', ['Toys', 'concerned', 'All']),
+                createImg('meme-imgs/X-Everywhere.jpg', ['Toys', 'Concerned', 'All']),
             ];
     }
 }
