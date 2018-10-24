@@ -14,41 +14,11 @@
         <h1>MEME Editor</h1>
 
     </header>
-
-    <input class="keyword-selector" list="keyword-selector" name="keyword" onchange="onFilterMemeImgs(this)"
-    placeholder="puppy">
-<datalist id="keyword-selector" onchange="onFilterMemeImgs(this)" value="all" placeholder="all">
-    <option value="All">
-    <option value="Happy">
-    <option value="Dancing">
-    <option value="Sleeping">
-    <option value="Puppy">
-    <option value="Carefree">
-    <option value="Trump">
-    <option value="Angry">
-    <option value="Stupid">
-    <option value="Powerful">
-    <option value="Love">
-    <option value="Cute">
-    <option value="Friendship">
-    <option value="Baby">
-    <option value="Calm">
-    <option value="Payback">
-    <option value="Computer">
-    <option value="Willy Wanka">
-    <option value="Sarcasm">
-    <option value="Sneeky">
-    <option value="Famous">
-    <option value="Revenge">
-    <option value="Laughing">
-    <option value="Putin">
-    <option value="Leader">
-    <option value="Serious">
-    <option value="toys">
-    <option value="Concerned">
-    <option value="Cat">
-</datalist>
-</form>
+    <input list="keyword-selector" id="options-list" type="text" name="keyword" oninput="onFilterMemeImgs(this)" placeholder="all" >
+    <datalist class="keyword-selector" id="keyword-selector" >
+       
+    </datalist>
+    </form>
 
 
     <section class="meme-container">
@@ -73,7 +43,7 @@
             </div>
         </div>
         <canvas class="canvas" onclick="onClickCanvas(event)"></canvas>
-
+        <button class="download" onclick="onDownload()">Download</button>
     </section>
 
     <script src="lib/jquery/jquery.js"></script>

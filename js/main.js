@@ -24,16 +24,21 @@ var gMeme = {
 function init() {
     createImgs();
     renderImgs();
+    renderOptions();
     createCanvas();
 }
 
+<<<<<<< HEAD
 function renderImgs(value = 'All') {
+=======
+function renderImgs(value = 'all') {
+>>>>>>> dc5b63ee544edcc72a5c779fe3e4d39b7039aa58
     var elMemeContainer = document.querySelector('.meme-container');
     var memeImgs = filterMemeImages(value);
     var strHTML = memeImgs.map(img => {
         return `<div class="memeimg-container"><img onclick="onClickImg(this,'${img.id}')" class="memeImg" id="${img.id}" src="${img.url}" ></div>`
     })
-    elMemeContainer.innerHTML = strHTML;
+    elMemeContainer.innerHTML = strHTML.join('');
 }
 
 function onClickImg(elImg, imgId) {
@@ -74,10 +79,10 @@ function drawTxt() {
 }
 
 function onFilterMemeImgs(el) {
-    setFilter(el.value);
-    renderImgs(el.value);
+    var keyword = el.value.toLowerCase()
+    setFilter(keyword);
+    renderImgs(keyword);
     el.placeholder = el.value;
-    el.value = '';
 
 }
 
@@ -143,6 +148,7 @@ function openEditor() {
     document.querySelector('.edit-meme-container').style.display = 'grid'
     $('.meme-container').hide();
     $('.keyword-selector').hide();
+    $('#options-list').hide();
 }
 
 function onCloseEditor() {
@@ -152,4 +158,30 @@ function onCloseEditor() {
     $('.editor-btn-container').hide();
     $('.meme-container').show();
     $('.keyword-selector').show();
+    $('.edit-meme-container').hide();
+    $('#options-list').show();
+}
+
+function getKeyWords() {
+    var gImgs = getMemes();
+    console.log('Images', gImgs);
+    var allKeyWords = [];
+    gImgs.forEach(img => {
+        var keyWords = img.keywords;
+        keyWords.forEach(word => {
+            if (allKeyWords.indexOf(word) === -1) {
+                allKeyWords.push(word);
+            }
+        })
+    })
+    return allKeyWords;
+}
+
+function renderOptions() {
+    var keyWords = getKeyWords();
+    keyWords.sort();
+    var strHTML = keyWords.map(word => {
+        return `<option value=${word}>`
+    })
+    document.querySelector('#keyword-selector').innerHTML = strHTML.join(' ');
 }
