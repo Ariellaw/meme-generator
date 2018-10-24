@@ -14,8 +14,8 @@
         <h1>MEME Editor</h1>
 
     </header>
-    <input list="keyword-selector" name="keyword" onchange="onFilterMemeImgs(this)" placeholder="all" >
-    <datalist class="keyword-selector" id="keyword-selector" onchange="onFilterMemeImgs(this)">
+    <input list="keyword-selector" id="options-list" type="text" name="keyword" oninput="onFilterMemeImgs(this)" placeholder="all" >
+    <datalist class="keyword-selector" id="keyword-selector" >
        
     </datalist>
     </form>
@@ -43,7 +43,7 @@
             </div>
         </div>
         <canvas class="canvas" onclick="onClickCanvas(event)"></canvas>
-
+        <button class="download" onclick="onDownload()">Download</button>
     </section>
 
     <script src="lib/jquery/jquery.js"></script>

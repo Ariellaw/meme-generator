@@ -24,13 +24,13 @@ function init() {
     createCanvas();
 }
 
-function renderImgs(value = 'All') {
+function renderImgs(value = 'all') {
     var elMemeContainer = document.querySelector('.meme-container');
     var memeImgs = filterMemeImages(value);
     var strHTML = memeImgs.map(img => {
         return `<div class="memeimg-container"><img onclick="onClickImg(this,'${img.id}')" class="memeImg" id="${img.id}" src="${img.url}" ></div>`
     })
-    elMemeContainer.innerHTML = strHTML;
+    elMemeContainer.innerHTML = strHTML.join('');
 }
 
 function onClickImg(elImg, imgId) {
@@ -74,10 +74,10 @@ function drawTxt() {
 }
 
 function onFilterMemeImgs(el) {
-    setFilter(el.value);
-    renderImgs(el.value);
+    var keyword = el.value.toLowerCase()
+    setFilter(keyword);
+    renderImgs(keyword);
     el.placeholder = el.value;
-    el.value = '';
 
 }
 
@@ -130,6 +130,7 @@ function openEditor() {
     document.querySelector('.edit-meme-container').style.display = 'grid'
     $('.meme-container').hide();
     $('.keyword-selector').hide();
+    $('#options-list').hide();
 }
 
 function onCloseEditor() {
@@ -139,6 +140,8 @@ function onCloseEditor() {
     $('.editor-btn-container').hide();
     $('.meme-container').show();
     $('.keyword-selector').show();
+    $('.edit-meme-container').hide();
+    $('#options-list').show();
 }
 
 function getKeyWords() {
@@ -156,10 +159,11 @@ function getKeyWords() {
     return allKeyWords;
 }
 
-function renderOptions(){
+function renderOptions() {
     var keyWords = getKeyWords();
-    var strHTML = keyWords.map(word =>{
+    keyWords.sort();
+    var strHTML = keyWords.map(word => {
         return `<option value=${word}>`
     })
-    document.querySelector('#keyword-selector').innerHTML = strHTML;
+    document.querySelector('#keyword-selector').innerHTML = strHTML.join(' ');
 }
