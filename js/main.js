@@ -19,10 +19,11 @@ var gDraw = {
 function init() {
     createImgs();
     renderImgs();
+    renderOptions();
     createCanvas();
 }
 
-function renderImgs(value = 'all') {
+function renderImgs(value = 'All') {
     var elMemeContainer = document.querySelector('.meme-container');
     var memeImgs = filterMemeImages(value);
     var strHTML = memeImgs.map(img => {
@@ -142,4 +143,27 @@ function onCloseEditor() {
     $('.editor-btn-container').hide();
     $('.meme-container').show();
     $('.keyword-selector').show();
+}
+
+function getKeyWords() {
+    var gImgs = getMemes();
+    console.log('Images', gImgs);
+    var allKeyWords = [];
+    gImgs.forEach(img => {
+        var keyWords = img.keywords;
+        keyWords.forEach(word => {
+            if (allKeyWords.indexOf(word) === -1) {
+                allKeyWords.push(word);
+            }
+        })
+    })
+    return allKeyWords;
+}
+
+function renderOptions(){
+    var keyWords = getKeyWords();
+    var strHTML = keyWords.map(word =>{
+        return `<option value=${word}>`
+    })
+    document.querySelector('#keyword-selector').innerHTML = strHTML;
 }
