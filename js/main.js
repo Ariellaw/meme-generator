@@ -2,18 +2,22 @@
 
 var gCanvas;
 var gCtx;
+var gCurrLine = 0;
+var gCurrMeme;
 
-var gDraw = {
+var gMeme = {
     img: 'img/002.jepg',
-    text: 'Place the text and start wrighting !',
-    font: {
-        type: 'Impact',
-        posX: 70,
-        posY: 70,
-        size: '30',
-        shadow: false,
-    },
-    fontColor: 'white',
+    texts: [
+        {
+            line: 'Place the text and start wrighting !',
+            type: 'Impact',
+            posX: 70,
+            posY: 70,
+            size: '30',
+            shadow: true,
+            color: 'white',
+        },
+    ],
     brush: 'Font'
 }
 
@@ -24,7 +28,6 @@ function init() {
 }
 
 function renderImgs(value = 'All') {
-
     var elMemeContainer = document.querySelector('.meme-container');
     var memeImgs = filterMemeImages(value);
     var strHTML = memeImgs.map(img => {
@@ -34,7 +37,7 @@ function renderImgs(value = 'All') {
 }
 
 function onClickImg(elImg, imgId) {
-    var memeImg = getImgById(imgId);
+    // var memeImg = getImgById(imgId);
     var ratio = elImg.naturalHeight / elImg.naturalWidth;
 
     if (window.innerWidth > elImg.naturalWidth) {
@@ -43,33 +46,30 @@ function onClickImg(elImg, imgId) {
         gCanvas.width = window.innerWidth * .9;
     }
     gCanvas.height = gCanvas.width * ratio * .85;
-    gDraw.img = memeImg;
+    gMeme.img = elImg;
     renderCanvas()
     openEditor();
 }
 
 function onWrighting(ev) {
     var txt = $('.top-txt').val();
-    gDraw.text = txt;
+    gMeme.texts[gCurrLine].line = txt;
     renderCanvas()
 }
 
 function renderCanvas() {
-    drawImg();
+    gCtx.drawImage(gMeme.img, 0, 0, gCanvas.width, gCanvas.height);
     drawTxt()
 }
 
-function drawImg() {
-    var currMeme = document.getElementById(`${gDraw.img.id}`);
-    gCtx.drawImage(currMeme, 0, 0, gCanvas.width, gCanvas.height);
-}
-
 function drawTxt() {
-    gCtx.fillStyle = gDraw.fontColor;
-    gCtx.font = `${gDraw.font.size}px ${gDraw.font.type}`;
-    gCtx.fillText(gDraw.text, gDraw.font.posX, gDraw.font.posY);
-    if (gDraw.font.shadow) {
-        gCtx.strokeText(gDraw.text, gDraw.font.posX, gDraw.font.posY);
+    for (let i = 0; i < gMeme.texts.length; i++) {
+        gCtx.fillStyle = gMeme.texts[i].color;
+        gCtx.font = `${gMeme.texts[i].size}px ${gMeme.texts[i].type}`;
+        gCtx.fillText(gMeme.texts[i].line, gMeme.texts[i].posX, gMeme.texts[i].posY);
+        if (gMeme.texts[i].shadow) {
+            gCtx.strokeText(gMeme.texts[i].line, gMeme.texts[i].posX, gMeme.texts[i].posY);
+        }
     }
 }
 
@@ -82,27 +82,25 @@ function onFilterMemeImgs(el) {
 }
 
 function onChangeFontSize(val) {
-    if (val === '-') gDraw.font.size = gDraw.font.size - 2;
-    else gDraw.font.size = +gDraw.font.size + 2;
+    if (val === '-') gMeme.texts[gCurrLine].size = gMeme.texts[gCurrLine].size - 2;
+    else gMeme.texts[gCurrLine].size = +gMeme.texts[gCurrLine].size + 2;
     renderCanvas();
 }
 
 function onChangeFont(val) {
-    gDraw.font.type = val;
+    gMeme.texts[gCurrLine].type = val;
     renderCanvas();
 }
 
 function onClickCanvas(event) {
-    var e = $('.canvas')
+    var e = $('.canvas');
     var offset = e.offset();
-    console.log({ offset, clientX: event.clientX, clientY: event.clientY });
-
-    let x = event.clientX - offset.left;
-    let y = event.clientY - offset.top;
-    switch (gDraw.brush) {
+    var x = event.clientX - offset.left;
+    var y = event.clientY - offset.top;
+    switch (gMeme.brush) {
         case 'Font':
-            gDraw.font.posX = +x;
-            gDraw.font.posY = +y;
+            gMeme.texts[gCurrLine].posX = +x;
+            gMeme.texts[gCurrLine].posY = +y;
             renderCanvas()
             break;
 
@@ -112,12 +110,26 @@ function onClickCanvas(event) {
 }
 
 function onAddLine() {
-    return document.querySelector('.txt-line').innerHTML += '<input class="txt-line" type="text" placeholder="Text line" oninput="onWrighting()"></input>';
+    gCurrLine++;
+
+    gMeme.texts[gCurrLine] ={
+        line: 'Place the text and start wrighting !',
+        type: 'Impact',
+        posX: 60,
+        posY: 60,
+        size: '30',
+        shadow: true,
+        color: 'white',
+    }
+    console.log(gMeme.texts[gCurrLine]);
+    renderCanvas()
 }
 
 function onChangeShadow() {
-    return gDraw.font.shadow = !gDraw.font.shadow;
+    gMeme.texts[gCurrLine].shadow = !gMeme.texts[gCurrLine].shadow;
+    renderCanvas();
 }
+
 function createCanvas() {
     gCanvas = document.querySelector('.canvas');
     gCanvas.width = window.innerWidth - 100;
@@ -126,6 +138,7 @@ function createCanvas() {
 }
 
 function openEditor() {
+    $('.top-txt').val('');
     $('.font-type').val('Font')
     document.querySelector('.edit-meme-container').style.display = 'grid'
     $('.meme-container').hide();
@@ -133,8 +146,8 @@ function openEditor() {
 }
 
 function onCloseEditor() {
-    $('.top-txt').val('');
-    $('.top-txt').hide();
+    gCurrLine = 0;
+    gMeme.texts =[gMeme.texts[gCurrLine]];
     $('.edit-meme-container').hide();
     $('.editor-btn-container').hide();
     $('.meme-container').show();
