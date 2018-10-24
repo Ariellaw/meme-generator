@@ -65,12 +65,10 @@ img{
 /* Editor */
 
 .edit-meme-container {
-    margin: 0 auto;
     display: none;
-    justify-content: space-around;
-    flex-direction: column;
-    /* width: 50vw; */
+    text-align: center;
 }
+
 
 .editor-header{
     background: black;
@@ -128,10 +126,10 @@ img{
         justify-content: center;
     }
     
-    .edit-meme-container{
-        /* width: 80%; */
+    /* .edit-meme-container{
+        width: 80%;
         /* margin: 0 auto; */
-    }
+    /* }  */
     
     .memeImg{
         width:75px;

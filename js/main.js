@@ -31,16 +31,20 @@ function renderImgs(value = 'all') {
 function onClickImg(elImg, imgId) {
     var memeImg = getImgById(imgId);
     var ratio = elImg.naturalWidth / elImg.naturalHeight;
-    var ratioH =  elImg.naturalHeight / elImg.naturalWidth;
-    
-    gCanvas.width = window.innerHeight/ratioH;
-    gCanvas.height = window.innerWidth/ratio;
+    var ratioh = elImg.naturalHeight / elImg.naturalWidth;
+    console.log('ratio', ratio)
+    console.log('image proportions', 'width', elImg.naturalWidth, 'height', elImg.naturalHeight);
+    console.log('screen', window.innerWidth, window.innerHeight)
 
-    if(window.innerWidth > elImg.naturalWidth) {
-    gCanvas.width = elImg.naturalWidth ;
-    // gCanvas.height = elImg.naturalWidth / ratio ;
-
+    // gCanvas.height = gCanvas.height * ratio;
+    if (window.innerWidth > elImg.naturalWidth) {
+        gCanvas.width = elImg.naturalWidth;
+    } else {
+        gCanvas.width = window.innerWidth*.8;
     }
+    gCanvas.height = gCanvas.width * ratioh;
+
+    // getImgRatio(elImg)
 
     gDraw.img = memeImg;
 
