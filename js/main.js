@@ -181,3 +181,8 @@ function renderOptions() {
     })
     document.querySelector('#keyword-selector').innerHTML = strHTML.join(' ');
 }
+
+function downloadImg(elLink) {
+    var imgContent = gCanvas.toDataURL('image/jpg');
+    elLink.href = imgContent
+}
