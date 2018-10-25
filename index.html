@@ -41,7 +41,7 @@
 
                 <div class="txt-line">
                     <input class="txt" type="text" placeholder="Text" oninput="onWrighting()">
-                    <button class="add-txt" onclick="onAddLine()">Add line</button>
+                    <button class="add-txt" onclick="onAddLine()" onblur="getLineWitdh()">Add line</button>
                 </div>
 
 
@@ -53,6 +53,8 @@
                     <button class="btn move-up" onclick="moveLine('up')">↑</button>
                     <button class="btn move-down" onclick="moveLine('down')">↓</button>
                     <button class="btn move-right" onclick="moveLine('right')">→</button>
+                    <button class="btn delete" onclick="onDelete()">Delete</button>
+
                 </div>
 
             </div>
@@ -60,7 +62,18 @@
                 Download
             </a>
         </div>
+<<<<<<< HEAD
         <canvas class="canvas" onclick="onClickCanvas(event)" oncontextmenu="onPickLIne(event)"></canvas>
+=======
+<<<<<<< HEAD
+        <canvas class="canvas"  onmousedown="onPickLIne(event)" onmousemove="handalMouseMove(event)" onmouseup="handalMouseUp()"></canvas>
+=======
+        <canvas class="canvas" onclick="onClickCanvas(event)"  oncontextmenu="onPickLIne(event)"></canvas>
+        <a href="#" onclick="downloadImg(this)" download="my-img.jpg">
+            Download as jpeg
+        </a>
+>>>>>>> 3de155a80f1d3e5330f93f827fbe36b077f5adae
+>>>>>>> 46969b57fce47b6f361c1bb9e6d99357ee427c13
     </section>
   
     <!-- FOOTER -->
