@@ -96,6 +96,7 @@ function onChangeFont(val) {
 }
 
 function onAddLine() {
+    if (!gMeme) gMeme.texts = gMeme.texts[0];
     $('.txt').val('');
     ++gCurrLine;
     gMeme.texts[gCurrLine] = {
@@ -215,11 +216,10 @@ function onPickLIne(event) {
 
 function onDelete() {
     var memeIdx = gMeme.texts.findIndex(meme => {
-
         return meme === gCurrMeme
     })
-    console.log(memeIdx);
-    gMeme.texts.splice(gMeme.texts.memeIdx, 1)
+    gMeme.texts.splice(memeIdx, 1)
+    gCurrLine--;
     renderCanvas()
 }
 
