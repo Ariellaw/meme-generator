@@ -1,8 +1,9 @@
 /* Helpers */
-@import "helpers.css";
+@import "./helpers.css";
 
 /* meme */
-
+@import "./img.css";
+@import "./editor.css";
 @font-face {
     font-family: Impact;
     src: url(../fonts/impact/impact.ttf);
@@ -43,99 +44,20 @@ h1 {
 }
 
 
-/* Gallery */
-.meme-container{
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    grid-template-rows: auto;
-    grid-gap: 5px;
-    align-items: stretch;
-    width: 95vw;
-    margin: 0 auto;
-}
-.memeImg{
-    width: 100%;
-    transition: outline .3s; 
-    border-radius: 20px solid yellow;
-}
 
-.memeImg:hover{
-    outline: 6px solid skyblue;    
-}
 
-/* Footer */
+/* Layout */
 .footer {
     margin-top: 20px;
     background-color: cadetblue; 
-}
-
-/* Editor */
-
-.edit-meme-container {
-    display: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5%;
     text-align: center;
-    grid-template-columns: repeat(6,1fr);
-    grid-template-rows: 100%;
-    grid-gap: 10px;
-    margin: 0 10%;
-}
-.editor-header{
-    background: cornflowerblue;
-    border-radius: 25px;
-    padding: 5px;    
-    grid-column: 1/span 2;
-    grid-row: 1/2;
-    flex-direction: column;
-}
-.editor-header  .btn {
-    background: transparent;
-    padding: 3px;
-    height: 30px;
-    width: 30px;
-    font-weight: bold;
-    color: antiquewhite;
-    font-size: 1.5em;
-    transition: all color .3s  ;
 }
 
-.editor-header  .btn:hover{
-    color: chartreuse;
-}
-
-.btn-download{
-    text-decoration: none;
-}
-
-.add-txt{
-    background: transparent;
-    border: 0;
-    color: antiquewhite;
-    font-size: 1.5em; 
-}
-
-.add-txt:hover{
-    color: chartreuse;
-}
-
-.editor-btn-container {
-    display: none;
-    flex-direction: column; 
-}
-
-.canvas {
-    grid-column: 3/ span 5;
-}
-
-.font-conrainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.btn-close-editor{
-    align-self: baseline;
-    border-radius: 50px; 
-}
 
 
 @media (max-width: 500px){

@@ -141,7 +141,7 @@ function openEditor() {
     document.querySelector('.edit-meme-container').style.display = 'grid';
     $('.meme-container').hide();
     $('.keyword-selector').hide();
-    $('#options-list').hide();
+    $('.options-list').hide();
 }
 
 function onCloseEditor() {
@@ -152,7 +152,8 @@ function onCloseEditor() {
     $('.meme-container').show();
     $('.keyword-selector').show();
     $('.edit-meme-container').hide();
-    $('#options-list').show();
+    $('.options-list').show();
+    
 }
 
 function getKeyWords() {
