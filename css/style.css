@@ -79,8 +79,12 @@ h1 {
        .editor-header{
             flex-direction: row;
             margin-top: 10px;
-        height: 200px;
-        width: 100vw;
+            height: 150px;
+            width: 100vw;
+        }
+        .editor-header .btn{
+            font-size: 20px;
+
         }
         .meme-container{
             width: 90%;
@@ -133,6 +137,15 @@ h1 {
     .editor-header .btn-delete {
 width: 100px;
     }
+
+    .canvas{
+        height: 40vh;
+margin-top: 10px;
+    }
+    .footer{
+        display: none;
+    }
+    
 }
 
 form{

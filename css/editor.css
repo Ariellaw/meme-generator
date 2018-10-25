@@ -5,7 +5,7 @@
 }
 
 .editor-header{
-    background: cornflowerblue;
+    background: transparent;
     border-radius: 25px;
     padding: 5px;    
     flex-direction: column;
@@ -19,10 +19,12 @@
     /* height: 30px; */
     /* width: 30px; */
     font-weight: bold;
-    color: antiquewhite;
+    color: darkslateblue;
     font-size: 1.5em;
     transition: all color .3s  ;
 }
+
+
 
 .editor-header  .btn:hover{
     color: chartreuse;
@@ -35,7 +37,7 @@
 .add-txt{
     background: transparent;
     border: 0;
-    color: antiquewhite;
+    color: darkblue;
     font-size: 1.5em; 
 }
 

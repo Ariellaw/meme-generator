@@ -88,13 +88,13 @@ function onFilterMemeImgs(el) {
 }
 
 function onChangeFontSize(val) {
-    if (val === '-') gMeme.texts[gCurrLine].size = gMeme.texts[gCurrLine].size - 2;
-    else gMeme.texts[gCurrLine].size = +gMeme.texts[gCurrLine].size + 2;
+    if (val === '-') gCurrMeme.size = gCurrMeme.size - 2;
+    else gCurrMeme.size = +gCurrMeme.size + 2;
     renderCanvas();
 }
 
 function onChangeFont(val) {
-    gMeme.texts[gCurrLine].type = val;
+    gCurrMeme.type = val;
     renderCanvas();
 }
 
@@ -117,7 +117,7 @@ function onAddLine() {
 }
 
 function onChangeShadow() {
-    gMeme.texts[gCurrLine].shadow = !gMeme.texts[gCurrLine].shadow;
+    gCurrMeme.shadow = !gCurrMeme.shadow;
     renderCanvas();
 }
 
@@ -205,16 +205,6 @@ function handalMouseUp() {
 }
 
 function onPickLIne(event) {
-    var elCanvas = $('.canvas');
-    var offset = elCanvas.offset();
-    var x = event.clientX - offset.left;
-    var y = event.clientY - offset.top;
-
-    let line = gMeme.texts.filter(() => {
-        return Math.abs(x - gMeme.texts[gCurrLine].posX) <= 20 && Math.abs(y - gMeme.texts[gCurrLine].posY) <= 200;
-    })
-    console.log(line);
-
     isMouseDown = true;
     $('.txt').val(`${gCurrMeme.line}`);
     gCurrX = parseInt(event.clientX - gCanvas.offsetLeft);
