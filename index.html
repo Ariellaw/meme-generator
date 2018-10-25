@@ -40,7 +40,7 @@
 
                 <div class="txt-line">
                     <input class="txt" type="text" placeholder="Text" oninput="onWrighting()">
-                    <button class="add-txt" onclick="onAddLine()">Add line</button>
+                    <button class="add-txt" onclick="onAddLine()" onblur="getLineWitdh()">Add line</button>
                 </div>
 
 
@@ -52,6 +52,8 @@
                     <button class="btn move-up" onclick="moveLine('up')">↑</button>
                     <button class="btn move-down" onclick="moveLine('down')">↓</button>
                     <button class="btn move-right" onclick="moveLine('right')">→</button>
+                    <button class="btn delete" onclick="onDelete()">Delete</button>
+
                 </div>
 
             </div>
@@ -59,7 +61,7 @@
                 Download
             </a>
         </div>
-        <canvas class="canvas" onclick="onClickCanvas(event)" oncontextmenu="onPickLIne(event)"></canvas>
+        <canvas class="canvas"  onmousedown="onPickLIne(event)" onmousemove="handalMouseMove(event)" onmouseup="handalMouseUp()"></canvas>
     </section>
 
     <footer class="footer">

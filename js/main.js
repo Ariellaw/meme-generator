@@ -5,6 +5,10 @@ var gCtx;
 var gCurrLine = 0;
 var gCurrMeme;
 var gLinesWidth = [];
+var isMouseDown = false;
+var gCurrX;
+var gCurrY;
+
 var gMeme = {
     img: 'img/002.jepg',
     texts: [
@@ -20,12 +24,12 @@ var gMeme = {
     ],
     brush: 'Font'
 }
+var gCurrMeme = gMeme.texts[gCurrLine];
 
 function init() {
     document.querySelector('.canvas').addEventListener("contextmenu", function (e) {
         e.preventDefault();
     }, false);
-
     createImgs();
     renderImgs();
     renderOptions();
@@ -53,7 +57,7 @@ function onClickImg(elImg) {
 
 function onWrighting(ev) {
     var txt = $('.txt').val();
-    gMeme.texts[gCurrLine].line = txt;
+    gCurrMeme.line = txt;
     renderCanvas()
 }
 
@@ -71,6 +75,7 @@ function drawTxt() {
             gCtx.strokeText(gMeme.texts[i].line, gMeme.texts[i].posX, gMeme.texts[i].posY);
         }
     }
+    getLineWitdh();
 }
 
 function onFilterMemeImgs(el) {
@@ -91,26 +96,9 @@ function onChangeFont(val) {
     renderCanvas();
 }
 
-function onClickCanvas(event) {
-    var elCanvas = $('.canvas');
-    var offset = elCanvas.offset();
-    var x = event.clientX - offset.left;
-    var y = event.clientY - offset.top;
-
-    switch (gMeme.brush) {
-        case 'Font':
-            gMeme.texts[gCurrLine].posX = +x;
-            gMeme.texts[gCurrLine].posY = +y;
-            renderCanvas()
-            break;
-        default:
-            break;
-    }
-}
-
 function onAddLine() {
     $('.txt').val('');
-    gCurrLine++;
+    ++gCurrLine;
     gMeme.texts[gCurrLine] = {
         line: 'Place me !',
         type: 'Impact',
@@ -120,8 +108,9 @@ function onAddLine() {
         shadow: true,
         color: 'white',
     }
+    gCurrMeme = gMeme.texts[gCurrLine];
     renderCanvas()
-    gLinesWidth = getLineWitdh()
+    getLineWitdh()
 }
 
 function onChangeShadow() {
@@ -133,7 +122,6 @@ function createCanvas() {
     gCanvas = document.querySelector('.canvas');
     gCanvas.width = window.innerWidth - 100;
     gCtx = gCanvas.getContext('2d');
-
 }
 
 function openEditor() {
@@ -147,7 +135,7 @@ function openEditor() {
 
 function onCloseEditor() {
     gCurrLine = 0;
-    gMeme.texts = [gMeme.texts[gCurrLine]];
+    gMeme.texts = [gMeme.texts[0]];
     $('.edit-meme-container').hide();
     $('.editor-btn-container').hide();
     $('.meme-container').show();
@@ -185,28 +173,60 @@ function downloadImg(elLink) {
 }
 
 
-function handlemosuemove() {
-    var x = event.clientX;
-    var y = event.clientY;
+function dragTxt(event) {
+    if (!isMouseDown) return;
+    var x = parseInt(event.clientX - gCanvas.offsetLeft)
+    var y = parseInt(event.clientY - gCanvas.offsetTop)
+    var distanceX = x - gCurrX;
+    var disranceY = y - gCurrY;
+    gCurrX = x;
+    gCurrY = y;
+    gCurrMeme.posX += distanceX;
+    gCurrMeme.posY += disranceY;
+    renderCanvas()
+    console.log('mem :', gCurrMeme);
+    console.log('mems :', gMeme);
 }
 
+function handalMouseMove(event) {
+    dragTxt(event)
+}
+
+function handalMouseUp() {
+    isMouseDown = false;
+}
 
 function onPickLIne(event) {
-    var elCanvas = $('.canvas');
-    var offset = elCanvas.offset();
-    var x = event.clientX - offset.left;
-    var y = event.clientY - offset.top;
-    
-    let line = gMeme.texts.filter(()=>{
-        return Math.abs(x - gMeme.texts[gCurrLine].posX) <= 20 && Math.abs(y - gMeme.texts[gCurrLine].posY) <= 200 ;
+    isMouseDown = true;
+    $('.txt').val(`${gCurrMeme.line}`);
+    gCurrX = parseInt(event.clientX - gCanvas.offsetLeft);
+    gCurrY = parseInt(event.clientY - gCanvas.offsetTop);
+    var meme = gMeme.texts.find(meme => {
+        return (
+            gCurrX >= meme.posX &&
+            gCurrX <= meme.posX + meme.width
+            && gCurrY <= meme.posY
+            && gCurrY >= meme.posY - meme.height
+        );
     })
-    console.log(line);
-    
+    if (!meme) return;
+    gCurrMeme = meme;
+    console.log('mem :', gCurrMeme);
 }
 
+function onDelete() {
+    var memeIdx = gMeme.texts.findIndex(meme => {
 
-function getLineWitdh(){
-    return gMeme.texts.map(meme => {
-        return gCtx.measureText(meme.line);
+        return meme === gCurrMeme
+    })
+    console.log(memeIdx);
+    gMeme.texts.splice(gMeme.texts.memeIdx, 1)
+    renderCanvas()
+}
+
+function getLineWitdh() {
+    return gMeme.texts.forEach(meme => {
+        meme.height = +meme.size;
+        meme.width = gCtx.measureText(meme.line).width;
     });
 }
