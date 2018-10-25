@@ -13,20 +13,10 @@
     <header class="header flex">
         <nav class="top-nav">
         <h1>MEME Editor</h1>
-<<<<<<< HEAD
-
-    </header>
-    <input list="keyword-selector" id="options-list" type="text" name="keyword" oninput="onFilterMemeImgs(this)"
-        placeholder="all">
-    <datalist class="keyword-selector" id="keyword-selector">
-
-    </datalist>
-=======
         <input list="keyword-selector" class="options-list" type="text" name="keyword" oninput="onFilterMemeImgs(this)"
         placeholder="all">
         <datalist class="keyword-selector" id="keyword-selector">
         </datalist>
->>>>>>> 30a28b02f3da07affced0a4206c95499bc36bf06
     </form>
 </nav>
 </header>
@@ -69,14 +59,10 @@
                 Download
             </a>
         </div>
-<<<<<<< HEAD
-        <canvas class="canvas" onclick="onClickCanvas(event)"></canvas>
+        <canvas class="canvas" onclick="onClickCanvas(event)"  oncontextmenu="onPickLIne(event)"></canvas>
         <a href="#" onclick="downloadImg(this)" download="my-img.jpg">
             Download as jpeg
         </a>
-=======
-        <canvas class="canvas" onclick="onClickCanvas(event)" oncontextmenu="onPickLIne(event)"></canvas>
->>>>>>> 30a28b02f3da07affced0a4206c95499bc36bf06
     </section>
     <input type="file" name="image" onchange="onFileInputChange(event)" />
     <div class="share-container"></div>

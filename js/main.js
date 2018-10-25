@@ -77,11 +77,6 @@ function onFilterMemeImgs(el) {
     var keyword = el.value.toLowerCase()
     setFilter(keyword);
     renderImgs(keyword);
-<<<<<<< HEAD
-
-=======
-    el.placeholder = el.value;
->>>>>>> 30a28b02f3da07affced0a4206c95499bc36bf06
 }
 
 function onChangeFontSize(val) {
@@ -115,14 +110,8 @@ function onClickCanvas(event) {
 function onAddLine() {
     $('.txt').val('');
     gCurrLine++;
-<<<<<<< HEAD
-
-    gMeme.texts[gCurrLine] = {
-        line: 'Place the text and start wrighting !',
-=======
     gMeme.texts[gCurrLine] = {
         line: 'Place me !',
->>>>>>> 30a28b02f3da07affced0a4206c95499bc36bf06
         type: 'Impact',
         posX: 60,
         posY: 60,
@@ -194,29 +183,6 @@ function downloadImg(elLink) {
     elLink.href = imgContent
 }
 
-<<<<<<< HEAD
-function onFileInputChange(ev) {
-    handleImageFromInput(ev, renderCanvasUp)
-}
-
-function handleImageFromInput(ev, onImageReady) {
-    document.querySelector('.share-container').innerHTML = ''
-    var reader = new FileReader();
-
-    reader.onload = function (event) {
-        var img = new Image();
-        img.onload = onImageReady.bind(null, img)
-        img.src = event.target.result;
-    }
-    reader.readAsDataURL(ev.target.files[0]);
-}
-
-
-function renderCanvasUp(img) {
-    gCanvas.width = img.width;
-    gCanvas.height = img.height;
-    gCtx.drawImage(img, 0, 0);
-=======
 
 function handlemosuemove() {
     var x = event.clientX;
@@ -242,5 +208,4 @@ function getLineWitdh(){
     return gMeme.texts.map(meme => {
         return gCtx.measureText(meme.line);
     });
->>>>>>> 30a28b02f3da07affced0a4206c95499bc36bf06
 }
