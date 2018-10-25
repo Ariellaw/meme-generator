@@ -67,60 +67,42 @@ h1 {
     .footer a:hover{
         color: chartreuse;
     }
-    
-
-
-
+    form{
+        margin:50px;
+    }    
 
 @media (max-width: 500px){
-    @media (max-width:500px){
-        .edit-meme-container{
-            flex-direction: column-reverse;
-            align-items: center;
-            text-align: start;
-        }
-       .editor-header{
-            flex-direction: row;
-            margin-top: 10px;
-            height: 150px;
-            width: 100vw;
-        }
-        .editor-header .btn{
-            font-size: 20px;
-
-        }
-        .meme-container{
-            width: 90%;
-            padding-bottom:0 ;
-        }
-        .options-list,.download{
-            width: 100px;
-        }
-        .top-nav{
-            height: 50px;
-            margin: 0 0;
-            /* width: inherit; */
-        }
-        .header{
-            margin-bottom: 0;
-        }
-        .footer{
-        }
+    .edit-meme-container{
+        flex-direction: column-reverse;
+        align-items: center;
     }
-    .meme-container {
+    .editor-header{
+        margin-top: 10px;
+        height: 150px;
+        width: 100vw;
+    }
+    .txt-line{
+        display: flex;
+        align-items: center;
+    }
+    .editor-header .btn{
+        font-size: 20px;
+    }
+    .meme-container{
+        width: 97%;
         grid-template-columns: repeat(4,1fr);
-        width: 90vw;
-        margin: 0 auto;
     }
-
-    .btn-delete {
+    .options-list,.download{
         width: 100px;
+    }
+    .top-nav{
+        height: 50px;
+        margin: 0 0;
     }
     h1 {
         font-size: 20px;
         padding: 0;
     }
-
     .keyword-selector{
         margin: 0;
         padding: 0;
@@ -135,23 +117,27 @@ h1 {
     .options-list{
         height: 30px;
     }
-    
-    .editor-header .btn-delete {
-width: 100px;
+    .editor-header .btn-delete {    
+        width: 100px;
     }
-
     .canvas{
         height: 40vh;
-margin-top: 10px;
+        margin-top: 10px;
     }
     .footer{
         display: none;
     }
-    
+    .change-font-container{
+        display: flex;
+    justify-content: center;
+    }
+    .btn-delete {
+        width: 100px;
+    }
+    .add-txt{
+        font-size: 14px;
+    }
 }
 
-form{
-    margin:50px;
-}
 
 

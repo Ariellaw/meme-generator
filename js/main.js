@@ -45,6 +45,7 @@ function renderImgs(value = 'all') {
     var strHTML = memeImgs.map(img => {
         return `<img onclick="onClickImg(this,'${img.id}')" class="memeImg" id="${img.id}" src="${img.url}" >`
     })
+//  strHTML.push(strHTML.slice())
     elMemeContainer.innerHTML = strHTML.join('');
 }
 
