@@ -244,13 +244,8 @@ function onDelete() {
 }
 
 function getLineWitdh() {
-<<<<<<< HEAD
-    return gMeme.texts.map(meme => {
-        return gCtx.measureText(meme.line);
-=======
     return gMeme.texts.forEach(meme => {
         meme.height = +meme.size;
         meme.width = gCtx.measureText(meme.line).width;
->>>>>>> 46969b57fce47b6f361c1bb9e6d99357ee427c13
     });
 }
