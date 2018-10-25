@@ -21,6 +21,9 @@ var gMeme = {
     brush: 'Font'
 }
 
+
+
+
 function init() {
     document.querySelector('.canvas').addEventListener("contextmenu", function (e) {
         e.preventDefault();
@@ -142,6 +145,7 @@ function openEditor() {
     $('.meme-container').hide();
     $('.keyword-selector').hide();
     $('.options-list').hide();
+    $('.download').hide();
 }
 
 function onCloseEditor() {
@@ -153,7 +157,9 @@ function onCloseEditor() {
     $('.keyword-selector').show();
     $('.edit-meme-container').hide();
     $('.options-list').show();
-    
+    $('.download').show();
+
+
 }
 
 function getKeyWords() {
@@ -196,16 +202,16 @@ function onPickLIne(event) {
     var offset = elCanvas.offset();
     var x = event.clientX - offset.left;
     var y = event.clientY - offset.top;
-    
-    let line = gMeme.texts.filter(()=>{
-        return Math.abs(x - gMeme.texts[gCurrLine].posX) <= 20 && Math.abs(y - gMeme.texts[gCurrLine].posY) <= 200 ;
+
+    let line = gMeme.texts.filter(() => {
+        return Math.abs(x - gMeme.texts[gCurrLine].posX) <= 20 && Math.abs(y - gMeme.texts[gCurrLine].posY) <= 200;
     })
     console.log(line);
-    
+
 }
 
 
-function getLineWitdh(){
+function getLineWitdh() {
     return gMeme.texts.map(meme => {
         return gCtx.measureText(meme.line);
     });

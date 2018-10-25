@@ -58,6 +58,13 @@ h1 {
     text-align: center;
 }
 
+.footer a{
+    width: 20%;
+    outline: 1px solid lightblue;
+    margin: 20px;
+    height: 100%;
+}
+
 
 
 @media (max-width: 500px){
