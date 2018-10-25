@@ -57,16 +57,19 @@ function renderPopularKeywords() {
     var strHTML = '';
     if (popularKeyWords !== null) {
         for (var word in popularKeyWords) {
-            var currFontSize =  fontSize +(popularKeyWords[word] * 3);
+            var currFontSize = fontSize + (popularKeyWords[word] * 3);
             console.log(word, currFontSize);
             var color = getRandomColor();
             strHTML += `<span onclick="onFilterMemeImgs('${word}')" class="keyword" style="color:${color}; font-size:${currFontSize}px"> &nbsp ${word} &nbsp </span>`
         }
+
+    } else {
+        strHTML = `<span onclick="onFilterMemeImgs('Happy')" class="keyword" style="color:green; font-size:30px"> &nbsp happy &nbsp </span>
+        <span onclick="onFilterMemeImgs('puppy')" class="keyword" style="color:yellow; font-size:20px"> &nbsp puppy &nbsp </span>`
     }
     document.querySelector('.popular-keywords span').innerHTML = strHTML;
+
 }
-
-
 function onClickImg(elImg) {
     var ratio = elImg.naturalHeight / elImg.naturalWidth;
     var width = window.innerWidth < 700 ? window.innerWidth : 700;
@@ -107,11 +110,11 @@ function onFilterMemeImgs(word) {
 }
 function setPopularKeyWords(keyword) {
     var gMapOfKeywords = getFromStorage(POPULAR_KEY_WORDS);
-     if(gMapOfKeywords=== null){
-         gMapOfKeywords = {};
-     }
+    if (gMapOfKeywords === null) {
+        gMapOfKeywords = {};
+    }
     console.log('someone searched for', keyword);
-    
+
 
     if (!gMapOfKeywords.hasOwnProperty(keyword)) {
         gMapOfKeywords[keyword] = 1;
