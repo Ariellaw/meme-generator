@@ -130,8 +130,9 @@ function createCanvas() {
 function openEditor() {
     $('.txt').val('');
     $('.font-type').val('Font')
-    document.querySelector('.edit-meme-container').style.display = 'grid';
+    document.querySelector('.edit-meme-container').style.display = 'flex';
     $('.meme-container').hide();
+    $('.top-nav').hide();
     $('.keyword-selector').hide();
     $('.options-list').hide();
     $('.download').hide();
