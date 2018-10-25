@@ -26,7 +26,7 @@ h1 {
 .header {
     background: cadetblue;;
     margin-bottom: 10px; 
-    height: 50px;
+    height: 100px;
 }
 
 .top-nav{
@@ -43,10 +43,23 @@ h1 {
     border: 0;
 }
 
+.about-us{
+    background-color: azure;
+    display: none;
+}
 
-
-
+.popular-keywords{
+    height: 10vh;
+    /* background-color: lightblue;
+    outline: 1px solid darkblue; */
+    font-family: cursive;
+    text-transform: capitalize;
+    cursor: pointer;
+    overflow: hidden;
+}
 /* Layout */
+
+
 .footer {
     margin-top: 20px;
     background-color: cadetblue; 

@@ -11,10 +11,12 @@
 
 <body onload="init()">
     <header class="header flex">
-        <nav class="top-nav">
-            <h1>MEME Editor</h1>
-            <input list="keyword-selector" class="options-list" type="text" name="keyword" oninput="onFilterMemeImgs(this)"
-                placeholder="all">
+        <nav class="top-nav popular-keywords">
+            <span></span>
+            <!-- <section class=>
+            </section> -->
+            <input list="keyword-selector" class="options-list" type="text" name="keyword" onchange="setPopularKeyWords(this.value)"
+                oninput="onFilterMemeImgs(this.value)" placeholder="search">
             <datalist class="keyword-selector" id="keyword-selector">
             </datalist>
             </form>
@@ -22,6 +24,11 @@
     </header>
 
 
+    <section class="about-us">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus reiciendis eligendi dolorum deserunt?
+        Similique esse iste neque consequatur iusto illo nisi beatae doloremque quam magni, laudantium sunt,
+        repellendus, qui harum.
+    </section>
     <main class="meme-container"> </main>
 
     <input type="file" class="download" name="image" onchange="onFileInputChange(event)" />
@@ -39,6 +46,7 @@
                 <button class="btn btn-rize-font" onclick="onChangeFontSize('-')">-</button>
                 <button class="btn btn-toggle-shadow" onclick="onChangeShadow()">T</button>
 
+
                 <div class="txt-line">
                     <input class="txt" type="text" placeholder="Text" oninput="onWrighting()">
                     <button class="add-txt" onclick="onAddLine()" onblur="getLineWitdh()">Add line</button>
@@ -49,12 +57,12 @@
 
 
                 <div class="btn-move-container">
+
                     <button class="btn move-left" onclick="moveLine('left')">←</button>
                     <button class="btn move-up" onclick="moveLine('up')">↑</button>
                     <button class="btn move-down" onclick="moveLine('down')">↓</button>
                     <button class="btn move-right" onclick="moveLine('right')">→</button>
                     <button class="btn delete" onclick="onDelete()">Delete</button>
-
                 </div>
 
             </div>
@@ -67,7 +75,7 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-        <a href="#" class="about-us">About us</a>
+        <a href="#" class="about-us-btn">About us</a>
         <a href="mailto:meme@meme.com" class="about-us">Contact us</a>
     </footer>
 
