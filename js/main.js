@@ -78,7 +78,6 @@ function onFilterMemeImgs(el) {
     var keyword = el.value.toLowerCase()
     setFilter(keyword);
     renderImgs(keyword);
-    el.placeholder = el.value;
 
 }
 
@@ -113,7 +112,7 @@ function onClickCanvas(event) {
 function onAddLine() {
     gCurrLine++;
 
-    gMeme.texts[gCurrLine] ={
+    gMeme.texts[gCurrLine] = {
         line: 'Place the text and start wrighting !',
         type: 'Impact',
         posX: 60,
@@ -149,7 +148,7 @@ function openEditor() {
 
 function onCloseEditor() {
     gCurrLine = 0;
-    gMeme.texts =[gMeme.texts[gCurrLine]];
+    gMeme.texts = [gMeme.texts[gCurrLine]];
     $('.edit-meme-container').hide();
     $('.editor-btn-container').hide();
     $('.meme-container').show();
@@ -185,4 +184,27 @@ function renderOptions() {
 function downloadImg(elLink) {
     var imgContent = gCanvas.toDataURL('image/jpg');
     elLink.href = imgContent
+}
+
+function onFileInputChange(ev) {
+    handleImageFromInput(ev, renderCanvasUp)
+}
+
+function handleImageFromInput(ev, onImageReady) {
+    document.querySelector('.share-container').innerHTML = ''
+    var reader = new FileReader();
+
+    reader.onload = function (event) {
+        var img = new Image();
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result;
+    }
+    reader.readAsDataURL(ev.target.files[0]);
+}
+
+
+function renderCanvasUp(img) {
+    gCanvas.width = img.width;
+    gCanvas.height = img.height;
+    gCtx.drawImage(img, 0, 0);
 }
