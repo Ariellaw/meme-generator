@@ -82,7 +82,6 @@ function onFilterMemeImgs(el) {
     var keyword = el.value.toLowerCase()
     setFilter(keyword);
     renderImgs(keyword);
-    el.placeholder = el.value;
 }
 
 function onChangeFontSize(val) {

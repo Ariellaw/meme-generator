@@ -35,6 +35,7 @@ function createImgs() {
                 createImg('meme-imgs/X-Everywhere.jpg', ['toys', 'concerned', 'all']),
                 createImg('meme-imgs/X-Everywhere.jpg', ['toys', 'concerned', 'all']),
             ];
+            
     }
 }
 
