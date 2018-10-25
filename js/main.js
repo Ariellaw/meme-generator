@@ -203,7 +203,6 @@ function handalMouseUp() {
 }
 
 function onPickLIne(event) {
-<<<<<<< HEAD
     var elCanvas = $('.canvas');
     var offset = elCanvas.offset();
     var x = event.clientX - offset.left;
@@ -214,7 +213,6 @@ function onPickLIne(event) {
     })
     console.log(line);
 
-=======
     isMouseDown = true;
     $('.txt').val(`${gCurrMeme.line}`);
     gCurrX = parseInt(event.clientX - gCanvas.offsetLeft);
@@ -230,7 +228,6 @@ function onPickLIne(event) {
     if (!meme) return;
     gCurrMeme = meme;
     console.log('mem :', gCurrMeme);
->>>>>>> 46969b57fce47b6f361c1bb9e6d99357ee427c13
 }
 
 function onDelete() {
