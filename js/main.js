@@ -8,6 +8,7 @@ var gLinesWidth = [];
 var isMouseDown = false;
 var gCurrX;
 var gCurrY;
+const POPULAR_KEY_WORDS = 'popularKeyWords';
 
 var gMeme = {
     img: 'img/002.jepg',
@@ -36,7 +37,9 @@ function init() {
     createImgs();
     renderImgs();
     renderOptions();
+    renderPopularKeywords();
     createCanvas();
+
 }
 
 function renderImgs(value = 'all') {
@@ -48,6 +51,22 @@ function renderImgs(value = 'all') {
 //  strHTML.push(strHTML.slice())
     elMemeContainer.innerHTML = strHTML.join('');
 }
+
+function renderPopularKeywords() {
+    var popularKeyWords = getFromStorage(POPULAR_KEY_WORDS);
+    var fontSize = 20;
+    var strHTML = '';
+    if (popularKeyWords !== null) {
+        for (var word in popularKeyWords) {
+            var currFontSize =  fontSize +(popularKeyWords[word] * 3);
+            console.log(word, currFontSize);
+            var color = getRandomColor();
+            strHTML += `<span onclick="onFilterMemeImgs('${word}')" class="keyword" style="color:${color}; font-size:${currFontSize}px"> &nbsp ${word} &nbsp </span>`
+        }
+    }
+    document.querySelector('.popular-keywords span').innerHTML = strHTML;
+}
+
 
 function onClickImg(elImg) {
     var ratio = elImg.naturalHeight / elImg.naturalWidth;
@@ -82,10 +101,26 @@ function drawTxt() {
     getLineWitdh();
 }
 
-function onFilterMemeImgs(el) {
-    var keyword = el.value.toLowerCase()
+function onFilterMemeImgs(word) {
+    var keyword = word.toLowerCase()
     setFilter(keyword);
     renderImgs(keyword);
+}
+function setPopularKeyWords(keyword) {
+    var gMapOfKeywords = getFromStorage(POPULAR_KEY_WORDS);
+     if(gMapOfKeywords=== null){
+         gMapOfKeywords = {};
+     }
+    console.log('someone searched for', keyword);
+    
+
+    if (!gMapOfKeywords.hasOwnProperty(keyword)) {
+        gMapOfKeywords[keyword] = 1;
+    } else {
+        gMapOfKeywords[keyword]++;
+    }
+    saveToStorage(POPULAR_KEY_WORDS, gMapOfKeywords)
+    renderPopularKeywords();
 }
 
 function onChangeFontSize(val) {
