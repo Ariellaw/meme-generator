@@ -3,7 +3,6 @@
 
 /* meme */
 
-@import "img.css";
 @font-face {
     font-family: Impact;
     src: url(../fonts/impact/impact.ttf);
@@ -24,10 +23,18 @@ h1 {
 }
 
 .header {
-    background: plum;
+    background: cadetblue;;
     margin-bottom: 10px; 
     height: 50px;
+}
 
+.top-nav{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
 }
 
 .btn {
@@ -35,6 +42,32 @@ h1 {
     border: 0;
 }
 
+
+/* Gallery */
+.meme-container{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: auto;
+    grid-gap: 5px;
+    align-items: stretch;
+    width: 95vw;
+    margin: 0 auto;
+}
+.memeImg{
+    width: 100%;
+    transition: outline .3s; 
+    border-radius: 20px solid yellow;
+}
+
+.memeImg:hover{
+    outline: 6px solid skyblue;    
+}
+
+/* Footer */
+.footer {
+    margin-top: 20px;
+    background-color: cadetblue; 
+}
 
 /* Editor */
 
@@ -47,20 +80,41 @@ h1 {
     margin: 0 10%;
 }
 .editor-header{
-    background: black;
-    margin-bottom: 10px; 
-    align-items: center;
+    background: cornflowerblue;
+    border-radius: 25px;
+    padding: 5px;    
     grid-column: 1/span 2;
     grid-row: 1/2;
     flex-direction: column;
 }
 .editor-header  .btn {
-    background: pink;
+    background: transparent;
     padding: 3px;
     height: 30px;
     width: 30px;
-    border-radius: 10px;
     font-weight: bold;
+    color: antiquewhite;
+    font-size: 1.5em;
+    transition: all color .3s  ;
+}
+
+.editor-header  .btn:hover{
+    color: chartreuse;
+}
+
+.btn-download{
+    text-decoration: none;
+}
+
+.add-txt{
+    background: transparent;
+    border: 0;
+    color: antiquewhite;
+    font-size: 1.5em; 
+}
+
+.add-txt:hover{
+    color: chartreuse;
 }
 
 .editor-btn-container {
@@ -69,11 +123,28 @@ h1 {
 }
 
 .canvas {
-    margin-bottom: 10px; 
     grid-column: 3/ span 5;
 }
 
-@media (max-width: 400px){
+.font-conrainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-close-editor{
+    align-self: baseline;
+    border-radius: 50px; 
+}
+
+
+@media (max-width: 500px){
+    .meme-container {
+        grid-template-columns: repeat(4,1fr);
+        width: 90vw;
+        margin: 0 auto;
+    }
+
     h1 {
         font-size: 20px;
         padding: 0;
@@ -88,7 +159,10 @@ h1 {
         height: 70px;
         flex-direction: column;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-between;
+    }
+    .options-list{
+        height: 30px;
     }
     
     .editor-header {

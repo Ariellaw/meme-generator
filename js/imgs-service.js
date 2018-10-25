@@ -13,7 +13,6 @@ function createImg(url, keywords) {
     }
 }
 
-
 function createImgs() {
     var storedMemeImages = getFromStorage(storedMemeImages);
     if (storedMemeImages !== null) {
@@ -34,8 +33,12 @@ function createImgs() {
                 createImg('meme-imgs/patrick.jpg', ['famous', 'laughing', 'all']),
                 createImg('meme-imgs/putin.jpg', ['putin', 'leader', 'serious', 'all']),
                 createImg('meme-imgs/X-Everywhere.jpg', ['toys', 'concerned', 'all']),
+<<<<<<< HEAD
                 createImg('meme-imgs/One-Does-Not-Simply.jpg', ['gameOfThromes', 'celeb', 'sarcastic', 'all']),
 
+=======
+                createImg('meme-imgs/X-Everywhere.jpg', ['toys', 'concerned', 'all']),
+>>>>>>> 30a28b02f3da07affced0a4206c95499bc36bf06
             ];
             
     }
@@ -53,8 +56,6 @@ function getFilter() {
 }
 
 function filterMemeImages(value) {
-    // console.log({ value });
-
     var filteredMemes = gMemes.filter(function (meme) {
         return meme.keywords.some(keyword => keyword.includes(value))
     });

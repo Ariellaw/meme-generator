@@ -25,8 +25,29 @@ function getImgById(imgId) {
     })
 }
 
-function getImgRatio(img){
+function getImgRatio(img) {
     var height = img.naturalHeight;
     console.log(height);
-    
+
+}
+
+function moveLine(val) {
+    switch (val) {
+        case 'up':
+            gCtx.moveTo(gMeme.texts[gCurrLine].posX, gMeme.texts[gCurrLine].posY--);
+            renderCanvas();
+            break;
+        case 'down':
+            gCtx.moveTo(gMeme.texts[gCurrLine].posX, gMeme.texts[gCurrLine].posY++);
+            renderCanvas();
+            break;
+        case 'left':
+            gCtx.moveTo(gMeme.texts[gCurrLine].posX--, gMeme.texts[gCurrLine].posY);
+            renderCanvas();
+            break;
+        case 'right':
+            gCtx.moveTo(gMeme.texts[gCurrLine].posX++, gMeme.texts[gCurrLine].posY);
+            renderCanvas();
+            break;
+    }
 }

@@ -4,12 +4,12 @@ var gCanvas;
 var gCtx;
 var gCurrLine = 0;
 var gCurrMeme;
-
+var gLinesWidth = [];
 var gMeme = {
     img: 'img/002.jepg',
     texts: [
         {
-            line: 'Place the text and start wrighting !',
+            line: 'Place me !',
             type: 'Impact',
             posX: 70,
             posY: 70,
@@ -22,6 +22,10 @@ var gMeme = {
 }
 
 function init() {
+    document.querySelector('.canvas').addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+    }, false);
+
     createImgs();
     renderImgs();
     renderOptions();
@@ -32,28 +36,23 @@ function renderImgs(value = 'all') {
     var elMemeContainer = document.querySelector('.meme-container');
     var memeImgs = filterMemeImages(value);
     var strHTML = memeImgs.map(img => {
-        return `<div class="memeimg-container"><img onclick="onClickImg(this,'${img.id}')" class="memeImg" id="${img.id}" src="${img.url}" ></div>`
+        return `<img onclick="onClickImg(this,'${img.id}')" class="memeImg" id="${img.id}" src="${img.url}" >`
     })
     elMemeContainer.innerHTML = strHTML.join('');
 }
 
-function onClickImg(elImg, imgId) {
-    // var memeImg = getImgById(imgId);
+function onClickImg(elImg) {
     var ratio = elImg.naturalHeight / elImg.naturalWidth;
-
-    if (window.innerWidth > elImg.naturalWidth) {
-        gCanvas.width = elImg.naturalWidth;
-    } else {
-        gCanvas.width = window.innerWidth * .9;
-    }
-    gCanvas.height = gCanvas.width * ratio * .85;
+    var width = window.innerWidth < 700 ? window.innerWidth : 700;
+    gCanvas.width = width * .8;
+    gCanvas.height = gCanvas.width * ratio;
     gMeme.img = elImg;
-    renderCanvas()
+    renderCanvas();
     openEditor();
 }
 
 function onWrighting(ev) {
-    var txt = $('.top-txt').val();
+    var txt = $('.txt').val();
     gMeme.texts[gCurrLine].line = txt;
     renderCanvas()
 }
@@ -78,7 +77,11 @@ function onFilterMemeImgs(el) {
     var keyword = el.value.toLowerCase()
     setFilter(keyword);
     renderImgs(keyword);
+<<<<<<< HEAD
 
+=======
+    el.placeholder = el.value;
+>>>>>>> 30a28b02f3da07affced0a4206c95499bc36bf06
 }
 
 function onChangeFontSize(val) {
@@ -93,27 +96,33 @@ function onChangeFont(val) {
 }
 
 function onClickCanvas(event) {
-    var e = $('.canvas');
-    var offset = e.offset();
+    var elCanvas = $('.canvas');
+    var offset = elCanvas.offset();
     var x = event.clientX - offset.left;
     var y = event.clientY - offset.top;
+
     switch (gMeme.brush) {
         case 'Font':
             gMeme.texts[gCurrLine].posX = +x;
             gMeme.texts[gCurrLine].posY = +y;
             renderCanvas()
             break;
-
         default:
             break;
     }
 }
 
 function onAddLine() {
+    $('.txt').val('');
     gCurrLine++;
+<<<<<<< HEAD
 
     gMeme.texts[gCurrLine] = {
         line: 'Place the text and start wrighting !',
+=======
+    gMeme.texts[gCurrLine] = {
+        line: 'Place me !',
+>>>>>>> 30a28b02f3da07affced0a4206c95499bc36bf06
         type: 'Impact',
         posX: 60,
         posY: 60,
@@ -121,8 +130,8 @@ function onAddLine() {
         shadow: true,
         color: 'white',
     }
-    console.log(gMeme.texts[gCurrLine]);
     renderCanvas()
+    gLinesWidth = getLineWitdh()
 }
 
 function onChangeShadow() {
@@ -138,9 +147,9 @@ function createCanvas() {
 }
 
 function openEditor() {
-    $('.top-txt').val('');
+    $('.txt').val('');
     $('.font-type').val('Font')
-    document.querySelector('.edit-meme-container').style.display = 'grid'
+    document.querySelector('.edit-meme-container').style.display = 'grid';
     $('.meme-container').hide();
     $('.keyword-selector').hide();
     $('#options-list').hide();
@@ -159,7 +168,6 @@ function onCloseEditor() {
 
 function getKeyWords() {
     var gImgs = getMemes();
-    console.log('Images', gImgs);
     var allKeyWords = [];
     gImgs.forEach(img => {
         var keyWords = img.keywords;
@@ -186,6 +194,7 @@ function downloadImg(elLink) {
     elLink.href = imgContent
 }
 
+<<<<<<< HEAD
 function onFileInputChange(ev) {
     handleImageFromInput(ev, renderCanvasUp)
 }
@@ -207,4 +216,31 @@ function renderCanvasUp(img) {
     gCanvas.width = img.width;
     gCanvas.height = img.height;
     gCtx.drawImage(img, 0, 0);
+=======
+
+function handlemosuemove() {
+    var x = event.clientX;
+    var y = event.clientY;
+}
+
+
+function onPickLIne(event) {
+    var elCanvas = $('.canvas');
+    var offset = elCanvas.offset();
+    var x = event.clientX - offset.left;
+    var y = event.clientY - offset.top;
+    
+    let line = gMeme.texts.filter(()=>{
+        return Math.abs(x - gMeme.texts[gCurrLine].posX) <= 20 && Math.abs(y - gMeme.texts[gCurrLine].posY) <= 200 ;
+    })
+    console.log(line);
+    
+}
+
+
+function getLineWitdh(){
+    return gMeme.texts.map(meme => {
+        return gCtx.measureText(meme.line);
+    });
+>>>>>>> 30a28b02f3da07affced0a4206c95499bc36bf06
 }
