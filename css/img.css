@@ -18,7 +18,9 @@
 }
 
 .memeImg:hover{
-    outline: 6px solid skyblue;    
+    outline: 5px solid skyblue;    
+    -moz-outline-radius: 25px;
+    /* outline-radius:20px;  */
 }
 
 /* Footer */

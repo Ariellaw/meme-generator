@@ -31,10 +31,7 @@ h1 {
 
 .top-nav{
     display: flex;
-    justify-content: space-between;
-    margin: 0 20px;
-    width: 100%;
-    height: 100%;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -43,50 +40,82 @@ h1 {
     border: 0;
 }
 
-.about-us{
-    background-color: azure;
-    display: none;
+.btn-delete {
+    width: 100px;
 }
-
-.popular-keywords{
-    height: 10vh;
-    /* background-color: lightblue;
-    outline: 1px solid darkblue; */
-    font-family: cursive;
-    text-transform: capitalize;
-    cursor: pointer;
-    overflow: hidden;
-}
-/* Layout */
 
 
 .footer {
-    margin-top: 20px;
     background-color: cadetblue; 
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 5%;
-    text-align: center;
+    /* text-align: center; */
+    padding: 5px;
 }
 
 .footer a{
-    width: 20%;
-    outline: 1px solid lightblue;
-    margin: 20px;
-    height: 100%;
-}
+    /* width: 20%; */
+    border: 1px solid lightblue;
+    border-radius: 20px;
+    text-decoration: none;
+    background: transparent;
+    margin-left: 20px; 
+    }
+    .footer a:hover{
+        color: chartreuse;
+    }
+    
+
 
 
 
 @media (max-width: 500px){
+    @media (max-width:500px){
+        .edit-meme-container{
+            flex-direction: column-reverse;
+            align-items: center;
+            text-align: start;
+        }
+       .editor-header{
+            flex-direction: row;
+            margin-top: 10px;
+            height: 150px;
+            width: 100vw;
+        }
+        .editor-header .btn{
+            font-size: 20px;
+
+        }
+        .meme-container{
+            width: 90%;
+            padding-bottom:0 ;
+        }
+        .options-list,.download{
+            width: 100px;
+        }
+        .top-nav{
+            height: 50px;
+            margin: 0 0;
+            /* width: inherit; */
+        }
+        .header{
+            margin-bottom: 0;
+        }
+        .footer{
+        }
+    }
     .meme-container {
         grid-template-columns: repeat(4,1fr);
         width: 90vw;
         margin: 0 auto;
     }
 
+    .btn-delete {
+        width: 100px;
+    }
     h1 {
         font-size: 20px;
         padding: 0;
@@ -107,19 +136,22 @@ h1 {
         height: 30px;
     }
     
-    .editor-header {
-        grid-column: 1;
-        grid-row: 2;
+    .editor-header .btn-delete {
+width: 100px;
     }
-    .canvas {
-        grid-column: 1;
-        grid-row: 1;
+
+    .canvas{
+        height: 40vh;
+margin-top: 10px;
     }
+    .footer{
+        display: none;
+    }
+    
 }
 
 form{
     margin:50px;
 }
-
 
 

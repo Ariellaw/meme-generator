@@ -1,29 +1,28 @@
 .edit-meme-container {
     display: none;
     text-align: center;
-    grid-template-columns: repeat(6,1fr);
-    grid-template-rows: 100%;
-    grid-gap: 10px;
-    margin: 0 10%;
+    justify-content: space-around    
 }
+
 .editor-header{
-    background: cornflowerblue;
+    background: transparent;
     border-radius: 25px;
     padding: 5px;    
-    grid-column: 1/span 2;
-    grid-row: 1/2;
     flex-direction: column;
+    height: 80vh;
+    width: 40vw;
+    justify-content: space-between;
 }
 .editor-header  .btn {
     background: transparent;
     padding: 3px;
-    height: 30px;
-    width: 30px;
     font-weight: bold;
-    color: antiquewhite;
+    color: darkslateblue;
     font-size: 1.5em;
     transition: all color .3s  ;
 }
+
+
 
 .editor-header  .btn:hover{
     color: chartreuse;
@@ -36,7 +35,7 @@
 .add-txt{
     background: transparent;
     border: 0;
-    color: antiquewhite;
+    color: darkblue;
     font-size: 1.5em; 
 }
 
@@ -53,13 +52,21 @@
     grid-column: 3/ span 5;
 }
 
-.font-conrainer{
+.font-container{
+
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-evenly;
 }
 
 .btn-close-editor{
     align-self: baseline;
     border-radius: 50px; 
 }
+
+.change-font-container{
+
+}
+
+

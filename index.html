@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Meme Genartor</title>
+    <link rel="stylesheet" href="css/editor.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -22,17 +23,27 @@
             </form>
         </nav>
     </header>
+    <nav class="top-nav">
+        <input list="keyword-selector" class="options-list" type="text" name="keyword" oninput="onFilterMemeImgs(this)"
+            placeholder="all">
+        <datalist class="keyword-selector" id="keyword-selector">
+        </datalist>
+        </form>
+        <input type="file" class="download" name="image" onchange="onFileInputChange(event)" />
+    </nav>
+
 
 
 
     <main class="meme-container"> </main>
 
-    <input type="file" class="download" name="image" onchange="onFileInputChange(event)" />
 
+    <!-- <div class="editor"> -->
     <section class="edit-meme-container">
         <div class="editor-header flex">
             <button class="btn btn-close-editor" onclick="onCloseEditor()">X</button>
             <div class="font-container">
+<<<<<<< HEAD
                 <select class="font-type" onchange="onChangeFont(this.value)">
                     <option value="Font" hidden>Font</option>
                     <option value="Impact">Impact</option>
@@ -43,15 +54,22 @@
                 <button class="btn btn-toggle-shadow" onclick="onChangeShadow()">T</button>
 
 
+=======
+                <div class="change-font-container">
+                    <select class="font-type" onchange="onChangeFont(this.value)">
+                        <option value="Font" hidden>Font</option>
+                        <option value="Impact">Impact</option>
+                        <option value="serif">Serif</option>
+                    </select>
+                    <button class="btn btn-rize-font" onclick="onChangeFontSize('+')">+</button>
+                    <button class="btn btn-rize-font" onclick="onChangeFontSize('-')">-</button>
+                    <button class="btn btn-toggle-shadow" onclick="onChangeShadow()">T</button>
+                </div>
+>>>>>>> 182c92e6044857a3256d8855bb2105f327130347
                 <div class="txt-line">
                     <input class="txt" type="text" placeholder="Text" oninput="onWrighting()">
                     <button class="add-txt" onclick="onAddLine()" onblur="getLineWitdh()">Add line</button>
                 </div>
-
-
-
-
-
                 <div class="btn-move-container">
 
                     <button class="btn move-left" onclick="moveLine('left')">←</button>
@@ -60,7 +78,6 @@
                     <button class="btn move-right" onclick="moveLine('right')">→</button>
                     <button class="btn delete" onclick="onDelete()">Delete</button>
                 </div>
-
             </div>
             <a class="btn btn-download" href="#" onclick="downloadImg(this)" download="my-img.jpg">
                 Download
@@ -68,7 +85,7 @@
         </div>
         <canvas class="canvas" onmousedown="onPickLIne(event)" onmousemove="handalMouseMove(event)" onmouseup="handalMouseUp()"></canvas>
     </section>
-
+    <!-- </div> -->
     <!-- FOOTER -->
     <footer class="footer">
         <a href="#" class="about-us-btn">About us</a>
