@@ -1,3 +1,30 @@
+/* Gallery */
+.meme-container{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: auto;
+    grid-gap: 5px;
+    align-items: stretch;
+    width: 80vw;
+    margin: 0 auto;
+    padding-bottom:60px;
+}
+.memeImg{
+    width: 100%;
+    transition: outline .3s; 
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.memeImg:hover{
+    outline: 6px solid skyblue;    
+}
+
+/* Footer */
+
+
+
+
 .meme-container{
     display: grid;
     grid-template-columns: repeat(5,1fr);
@@ -14,3 +41,4 @@
 .memeImg:hover{
     outline: 6px solid skyblue;    
 }
+

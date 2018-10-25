@@ -12,18 +12,19 @@
 <body onload="init()">
     <header class="header flex">
         <nav class="top-nav">
-        <h1>MEME Editor</h1>
-        <input list="keyword-selector" class="options-list" type="text" name="keyword" oninput="onFilterMemeImgs(this)"
-        placeholder="all">
-        <datalist class="keyword-selector" id="keyword-selector">
-        </datalist>
-    </form>
-</nav>
-</header>
+            <h1>MEME Editor</h1>
+            <input list="keyword-selector" class="options-list" type="text" name="keyword" oninput="onFilterMemeImgs(this)"
+                placeholder="all">
+            <datalist class="keyword-selector" id="keyword-selector">
+            </datalist>
+            </form>
+        </nav>
+    </header>
 
 
-    <main class="meme-container">
-    </main>
+    <main class="meme-container"> </main>
+
+    <input type="file" class="download" name="image" onchange="onFileInputChange(event)" />
 
     <section class="edit-meme-container">
         <div class="editor-header flex">
@@ -61,19 +62,23 @@
                 Download
             </a>
         </div>
+<<<<<<< HEAD
         <canvas class="canvas"  onmousedown="onPickLIne(event)" onmousemove="handalMouseMove(event)" onmouseup="handalMouseUp()"></canvas>
+=======
+        <canvas class="canvas" onmousedown="onPickLIne(event)" onmousemove="handalMouseMove(event)" onmouseup="handalMouseUp()"></canvas>
+>>>>>>> da51b33bca13103577a9b374b24dd6b794b4b9a9
     </section>
-    <input type="file" name="image" onchange="onFileInputChange(event)" />
-    <div class="share-container"></div>
 
-
+    <!-- FOOTER -->
     <footer class="footer">
         <a href="#" class="about-us">About us</a>
+        <a href="mailto:meme@meme.com" class="about-us">Contact us</a>
     </footer>
 
     <script src="lib/jquery/jquery.js"></script>
     <script src="js/util-service.js"></script>
     <script src="js/imgs-service.js"></script>
+    <!-- <script src="upload-and-share/client/js/upload-service.js"></script> -->
     <script src="js/main.js"></script>
 </body>
 
