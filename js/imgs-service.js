@@ -13,7 +13,6 @@ function createImg(url, keywords) {
     }
 }
 
-
 function createImgs() {
     var storedMemeImages = getFromStorage(storedMemeImages);
     if (storedMemeImages !== null) {
@@ -34,6 +33,7 @@ function createImgs() {
                 createImg('meme-imgs/patrick.jpg', ['famous', 'laughing', 'all']),
                 createImg('meme-imgs/putin.jpg', ['putin', 'leader', 'serious', 'all']),
                 createImg('meme-imgs/X-Everywhere.jpg', ['toys', 'concerned', 'all']),
+                createImg('meme-imgs/X-Everywhere.jpg', ['toys', 'concerned', 'all']),
             ];
     }
 }
@@ -50,8 +50,6 @@ function getFilter() {
 }
 
 function filterMemeImages(value) {
-    // console.log({ value });
-
     var filteredMemes = gMemes.filter(function (meme) {
         return meme.keywords.some(keyword => keyword.includes(value))
     });
