@@ -60,7 +60,7 @@ function renderPopularKeywords() {
             var currFontSize =  fontSize +(popularKeyWords[word] * 3);
             console.log(word, currFontSize);
             var color = getRandomColor();
-            strHTML += `<span onclick="onFilterMemeImgs('${word}')" style="color:${color}; font-size:${currFontSize}px"> &nbsp ${word} &nbsp </span>`
+            strHTML += `<span onclick="onFilterMemeImgs('${word}')" class="keyword" style="color:${color}; font-size:${currFontSize}px"> &nbsp ${word} &nbsp </span>`
         }
     }
     document.querySelector('.popular-keywords span').innerHTML = strHTML;

@@ -8,7 +8,10 @@
     font-family: Impact;
     src: url(../fonts/impact/impact.ttf);
 }
-
+@font-face {
+    font-family: mali;
+    src: url(../fonts/Mali/Mali-Bold.ttf);
+}
 
 
 /* Basic */
@@ -27,8 +30,23 @@ h1 {
     background: cadetblue;;
     margin-bottom: 10px; 
     height: 100px;
+    justify-content: space-between;
 }
-
+.popular-keywords .keyword{
+    cursor: pointer;
+    justify-self:flex-end;
+}
+.header .logo{
+    font-size: 50px;
+    border: 30px;
+    align-self: center;
+    justify-self: flex-start;
+    font-family: mali;
+    padding-left: 30px;
+}
+.keyword-span{
+    padding-left: 30px;
+}
 .top-nav{
     display: flex;
     justify-content: space-around;
